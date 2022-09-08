@@ -30,8 +30,8 @@ import {
         <Flex
           bg={useColorModeValue('#5458F6', 'gray.800')}
           minH={'60px'}
-          py={{ base: 2 }}
-          px={{ base: 4 }}
+          py={{ base: 8 }}
+          px={{ base: 10 }}
           borderBottom={1}
           borderStyle={'solid'}
           borderColor={useColorModeValue('gray.200', 'gray.900')}
@@ -53,7 +53,7 @@ import {
             <Text
               textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
               fontFamily={'heading'}
-              fontSize={'lg'}
+              fontSize={'xl'}
               color={useColorModeValue('white', 'white')}>
               Logo
             </Text>
@@ -71,24 +71,22 @@ import {
             <Button
               as={'a'}
               color={useColorModeValue('white', 'white')}
-              fontSize={'lg'}
+              fontSize={'xl'}
               fontWeight={400}
               variant={'link'}
-              href={'#'}>
-              Sign In
+              href={'./Login'}>
+              Login
             </Button>
             <Button
-              display={{ base: 'none', md: 'inline-flex' }}
-              fontSize={'lg'}
-              fontWeight={600}
-              color={'#5458F6'}
-              bg={'white'}
-              href={'#'}
-              _hover={{
-                bg: 'pink.300',
-              }}>
-              Sign Up
+              as={'a'}
+              color={useColorModeValue('white', 'white')}
+              fontSize={'xl'}
+              fontWeight={400}
+              variant={'link'}
+              href={'./SignUp'}>
+                Sign Up
             </Button>
+
           </Stack>
         </Flex>
   
@@ -113,7 +111,7 @@ import {
                 <Link
                   p={2}
                   href={navItem.href ?? '#'}
-                  fontSize={'lg'}
+                  fontSize={'xl'}
                   fontWeight={500}
                   color={linkColor}
                   _hover={{
@@ -161,11 +159,11 @@ import {
               transition={'all .3s ease'}
               _groupHover={{ color: 'pink.400' }}
               fontWeight={500}
-              fontSize={'lg'}
+              fontSize={'xl'}
               >
               {label}
             </Text>
-            <Text fontSize={'lg'}>{subLabel}</Text>
+            <Text fontSize={'xl'}>{subLabel}</Text>
           </Box>
           <Flex
             transition={'all .3s ease'}
@@ -248,6 +246,10 @@ import {
 
   const NAV_ITEMS = [
     {
-      label: 'Projects',
-    },
+      label: 'Home',
+      href: '/',
+    },{
+      label: 'Project',
+      href: 'AllProjects',
+    }, 
   ];

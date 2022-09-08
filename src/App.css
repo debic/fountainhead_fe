@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: #5458f6;
+
 }
 
 .App-logo {
@@ -21,11 +23,28 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #5458f6;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.LoginPage{
+  display: flex;
+  height: 90vh;
+}
+
+.LoginPage_image{
+background-image: url("./Img/background.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+width: 50vw;
+
+}
+
+.LoginPage_form{
+  width: 50vw;
 }
 
 @keyframes App-logo-spin {
