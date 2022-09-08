@@ -248,6 +248,6 @@ import {
 
   const NAV_ITEMS = [
     {
-      label: 'Projects',
+      label: 'Project',
     },
   ];
