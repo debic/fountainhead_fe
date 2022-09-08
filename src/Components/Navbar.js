@@ -74,21 +74,19 @@ import {
               fontSize={'lg'}
               fontWeight={400}
               variant={'link'}
-              href={'#'}>
-              Sign In
+              href={'./Login'}>
+              Login
             </Button>
             <Button
-              display={{ base: 'none', md: 'inline-flex' }}
+              as={'a'}
+              color={useColorModeValue('white', 'white')}
               fontSize={'lg'}
-              fontWeight={600}
-              color={'#5458F6'}
-              bg={'white'}
-              href={'#'}
-              _hover={{
-                bg: 'pink.300',
-              }}>
-              Sign Up
+              fontWeight={400}
+              variant={'link'}
+              href={'./SignUp'}>
+                Sign Up
             </Button>
+
           </Stack>
         </Flex>
   
@@ -248,6 +246,10 @@ import {
 
   const NAV_ITEMS = [
     {
+      label: 'Home',
+      href: '/',
+    },{
       label: 'Project',
-    },
+      href: 'AllProjects',
+    }, 
   ];

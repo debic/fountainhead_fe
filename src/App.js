@@ -1,32 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/Navbar';
 import * as React from 'react'
+import Home from './Pages/Home';
+import Login from './Pages/Login';
+import SignUp from './Pages/SignUp';
+import AllProjects from './Pages/AllProjects';
+import ProjectInfo from './Pages/ProjectInfo';
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // 1. import `ChakraProvider` component
 import { ChakraProvider } from '@chakra-ui/react'
 
 
+
 function App() {
   return (
     <ChakraProvider>
+      <BrowserRouter>
+
     <div className="App">
       <Navbar/>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+             <Route path="/" element={<Home/>}/>
+             <Route path="/Login" element={<Login/>}/>
+             <Route path="/SignUp" element={<SignUp/>}/>
+             <Route path="/AllProjects" element={<AllProjects/>}/>
+             <Route path="/ProjectInfo" element={<ProjectInfo/>}/>
+
+
+        </Routes>
     </div>
+    </BrowserRouter>
+
     </ChakraProvider>
   );
 }
