@@ -5,16 +5,39 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
   Stack,
-  Link,
   Button,
   Heading,
   Text,
-  useColorModeValue,
+
 } from '@chakra-ui/react';
+import { useState} from 'react';
+import axios from 'axios';
 
 export default function Login() {
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [errorMessage, setErrorMessage] = useState("")
+  const [positiveMessage, setPositiveMessage] = useState("")
+
+  async function handleLogin(e){
+    try{
+      e.preventDefault()
+      const res = await axios.post("http://localhost:8080/api/user/login", {email,password}, {withCredentials: true} )
+      if(res.data.ok){
+        setErrorMessage("")
+        setPositiveMessage("Welcome!")
+      }
+    }catch(err){
+      console.log(err)
+      setErrorMessage(err.message)
+      setPositiveMessage("")
+
+    }
+  }
+
+
   return (
     <div className='LoginPage'>
       <div className='LoginPage_image'>
@@ -28,39 +51,33 @@ export default function Login() {
       justify={'center'}>
       <Stack spacing={8}   py={12} px={6}>
         <Stack align={'left'}>
-          <Heading fontSize={'4xl'}>Login</Heading>
+          <Heading fontSize={'6xl'} as='samp' color={'white'}>Login</Heading>
           <Text fontSize={'lg'} color={'white'}>
-            to enjoy all of our cool <Link color={'blue.400'}>features</Link> ✌️
+          Welcome back! Please enter your details       
           </Text>
+          <Text fontSize={'lg'} color={'#700A0A'}>{errorMessage}</Text>
+        <Text fontSize={'lg'} color={'white'}>{positiveMessage}</Text>
         </Stack>
-        <Box
-          rounded={'lg'}
-          bg={useColorModeValue('white', 'gray.700')}
-          boxShadow={'lg'}
-          p={8}>
-          <Stack spacing={4}>
-            <FormControl id="email">
-              <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+        <Box >
+          <Stack spacing={4} >
+            <FormControl   id="email">
+              <FormLabel color={'white'}>Email address</FormLabel>
+              <Input onChange={(e) => {setEmail(e.target.value)}} borderWidth={2} type="email" />
             </FormControl>
             <FormControl id="password">
-              <FormLabel>Password</FormLabel>
-              <Input type="password" />
+              <FormLabel color={'white'}>Password</FormLabel>
+              <Input onChange={(e) => {setPassword(e.target.value)}} borderWidth={2} type="password" />
             </FormControl>
             <Stack spacing={10}>
-              <Stack
-                direction={{ base: 'column', sm: 'row' }}
-                align={'start'}
-                justify={'space-between'}>
-                <Checkbox>Remember me</Checkbox>
-                <Link color={'blue.400'}>Forgot password?</Link>
-              </Stack>
-              <Button
-                bg={'blue.400'}
-                color={'white'}
+   
+              <Button onClick={handleLogin}
+                bg={'white'}
+                color={'#5458f6'}
                 _hover={{
-                  bg: 'blue.500',
-                }}>
+                  bg: '#212cb5',
+                  
+                }}
+                >
                 Sign in
               </Button>
             </Stack>

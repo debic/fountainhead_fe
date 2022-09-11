@@ -1,7 +1,6 @@
 .App {
-  text-align: center;
   background-color: #5458f6;
-
+  font-family: 'Noto Sans', sans-serif;
 }
 
 .App-logo {
@@ -47,11 +46,14 @@ width: 50vw;
   width: 50vw;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+@media only screen and (max-width: 850px) {
+
+  .LoginPage{
+  flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+
+  .LoginPage_form{
+    width: 100vw;
   }
 }

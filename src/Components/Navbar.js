@@ -32,9 +32,9 @@ import {
           minH={'60px'}
           py={{ base: 8 }}
           px={{ base: 10 }}
-          borderBottom={1}
+          borderBottom={2}
           borderStyle={'solid'}
-          borderColor={useColorModeValue('gray.200', 'gray.900')}
+          borderColor={useColorModeValue('white', 'gray.900')}
           align={'center'}>
           <Flex
             flex={{ base: 1, md: 'auto' }}
