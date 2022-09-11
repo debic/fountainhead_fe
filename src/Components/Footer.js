@@ -24,7 +24,7 @@ import {
         <Stack direction={'column'} spacing={6}>
         <Heading fontSize={'4xl'} as='samp' color={'white'} textAlign='center' fontWeight='base' >FOUNTAINHEAD</Heading>
         <Text fontSize={'lg'} color={'white'}>
-           Made by : Yuval Miles | Debi Codriansky | Ben Cosmin | Aviv Maman      
+           Made by : Vladi Yudashkin | Debi Codriansky | Ben Cosmin | Aviv Maman      
         </Text>
         </Stack>
       </Container>

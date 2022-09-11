@@ -11,20 +11,36 @@ import {
   FormLabel, Input, FormControl, Box,Textarea
 
 } from '@chakra-ui/react';
+import axios from 'axios';
 
 
 
 export default function EditProfile() {
+  const [name, setName] = useState("")
   const [email, setEmail] = useState("")
-  const [password, setName] = useState("")
+  const [password, setPassword] = useState("")
   const [profilePicture, setProfilePicture] = useState("")
   const [bio, setBio] = useState("")
 
-  
+
   const [oldPassword, setOldPassword] = useState("")
   const [newPassword, setNewPassword] = useState("")
   const [reNewPassword, setReNewPassword] = useState("")
 
+
+
+  async function handleEditProfile(e){
+    try{
+      e.preventDefault()
+      const res = await axios.post("http://localhost:8080/api/user/signup", {name,email,password, profilePicture,bio,oldPassword, newPassword,reNewPassword }, {withCredentials: true} )
+      if(res.data.ok){
+  
+      }
+    }catch(err){
+      console.log(err)
+ 
+    }
+  }
   
   
   return (
@@ -76,7 +92,7 @@ export default function EditProfile() {
                 size='sm' borderWidth={2}
               />
 
-              <Button onClick={""}
+              <Button onClick={handleEditProfile}
                 bg={'white'}
                 color={'#5458f6'}
                 _hover={{
