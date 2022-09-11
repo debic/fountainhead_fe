@@ -1,9 +1,31 @@
 import { Stack, Flex, VStack, useBreakpointValue } from '@chakra-ui/react';
-import { ProductCard } from '../Components/ProductCard';
+import  ProductCard  from '../Components/ProductCard';
 import SearchForm from '../Components/SearchForm';
 import { products } from '../Components/_data';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 
 export default function AllProjects() {
+  const [allprojects, setAllProjects] = useState([]);
+
+
+
+  async function readAllProjects(){
+    try{
+      const projects = await axios.get("http://localhost:8080/api/project")
+      //console.log(projects.data.data)
+     setAllProjects(projects.data.data)
+    }catch(err){
+      console.log(err)
+    }
+  }
+
+
+  useEffect(() => {
+    readAllProjects()
+  }, [])
+
   return (
 
     <Flex
@@ -43,8 +65,8 @@ export default function AllProjects() {
           >
 
             <Stack spacing="6">
-              {products.map((item) => (
-                <ProductCard key={item.id} {...item} />
+              {allprojects.map((project) => (
+                <ProductCard key={project.id} {...project} project={project}/>
               ))}
             </Stack>
           </Stack>

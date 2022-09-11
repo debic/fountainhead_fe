@@ -5,8 +5,9 @@ import { Avatar, Box, Center, Heading, Stack, Text, useColorModeValue, Flex, Acc
     AccordionIcon,CircularProgress,CircularProgressLabel,Image, Spacer } from '@chakra-ui/react'
 import * as React from 'react'
 
-export const ProductCard = (props) => {
-    const { product, rootProps, rating } = props
+
+export default function ProductCard({ project }) {
+    console.log(project)
     return (
         <Center py={20}>
             <Box
@@ -27,7 +28,7 @@ export const ProductCard = (props) => {
                   pos={'relative'}>
     
 
-                <iframe src={"https://codesandbox.io/embed/damp-violet-0ybqks?fontsize=17&hidenavigation=0&theme=dark"}
+                <iframe src={project.iframe}
                         style={{width:"100%", height:"100%"}}
                         title="damp-violet-0ybqks"
                         allow= {"accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"}
@@ -42,13 +43,11 @@ export const ProductCard = (props) => {
                             color={useColorModeValue('gray.700', 'white')}
                             fontSize={'2xl'}
                             fontFamily={'body'}>
-                            Project Title
+                            {project.name}
                         </Heading>
                         <Text color={'gray.500'}>
-                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-                            et ea rebum.
+                        {project.info}
+
                         </Text>
                     </Stack>
                     <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
@@ -70,11 +69,9 @@ export const ProductCard = (props) => {
                     <AccordionButton p={0} >
                             <Box flex='1' textAlign='left'>
                             <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
-                                    <Avatar
-                                    src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
-                                    alt={'Author'}/>
+                                   
                                     <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
-                                        <Text fontWeight={600}>Achim Rolle</Text>
+                                        <Text fontWeight={600}>Students Raiting</Text>
                             </Stack>
                             </Stack>
                             </Box>
@@ -94,17 +91,8 @@ export const ProductCard = (props) => {
                             <CircularProgress value={40} color='#DF5EEA'>
                             <CircularProgressLabel>40%</CircularProgressLabel>
                             </CircularProgress>
-                            <CircularProgress value={40} color='#2D30C3'>
-                            <CircularProgressLabel>40%</CircularProgressLabel>
-                            </CircularProgress>
-                        
-                            <Image
-                                mx='5'
-                                borderRadius='full'
-                                boxSize='45px'
-                                src='https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'
-                                alt=''
-                                />
+                            
+                    
                           
                           <Text fontWeight={200}>Points</Text>
                           </Center>
@@ -125,11 +113,9 @@ export const ProductCard = (props) => {
                     <AccordionButton p={0} >
                             <Box flex='1' textAlign='left'>
                             <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
-                                    <Avatar
-                                    src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
-                                    alt={'Author'}/>
+                                    
                                     <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
-                                        <Text fontWeight={600}>Achim Rolle</Text>
+                                        <Text fontWeight={600}>Profesionals Raiting</Text>
                             </Stack>
                             </Stack>
                             </Box>
@@ -149,17 +135,8 @@ export const ProductCard = (props) => {
                             <CircularProgress value={40} color='#DF5EEA'>
                             <CircularProgressLabel>40%</CircularProgressLabel>
                             </CircularProgress>
-                            <CircularProgress value={40} color='#2D30C3'>
-                            <CircularProgressLabel>40%</CircularProgressLabel>
-                            </CircularProgress>
-                        
-                            <Image
-                                mx='5'
-                                borderRadius='full'
-                                boxSize='45px'
-                                src='https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'
-                                alt=''
-                                />
+                
+                     
                           
                           <Text fontWeight={200}>Points</Text>
                           </Center>
@@ -180,14 +157,10 @@ export const ProductCard = (props) => {
                 </Box>
                 <Button  bg={'#F6F6F6'}  variant={'outline'} >
                     <Center>
-                        <Text>See more comments</Text>
+                        <Text>See comments and vote</Text>
                     </Center>
                 </Button>
-                <Button  bg={'#F6F6F6'}  ml={'5%'} variant={'outline'} >
-                    <Center>
-                        <Text>Make a comment</Text>
-                    </Center>
-                </Button>
+
             </Box>
         </Center>
     )
