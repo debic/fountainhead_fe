@@ -1,12 +1,13 @@
 import { ExternalLinkIcon } from '@chakra-ui/icons';
-import { Box, Button, FormControl, FormLabel, Input, Link, Stack, Text, Textarea, useBreakpointValue } from '@chakra-ui/react'
+import { Box, Button, FormControl, FormLabel, Input, Link, Select, Stack, Text, Textarea, useBreakpointValue } from '@chakra-ui/react'
 import React, { useState } from 'react'
 
 export default function AddProjectForm(props) {
 
-    const [formData, setFormData] = useState({ name: "", description: "", link: "" });
+    const [formData, setFormData] = useState({ name: "", description: "", link: "", type: "" });
 
     function handleChange(e) {
+        console.log([e.target.id], e.target.value);
         setFormData((previousState) => ({
             ...previousState,
             [e.target.id]: e.target.value,
@@ -22,11 +23,11 @@ export default function AddProjectForm(props) {
             <Stack spacing={4} >
                 <FormControl id="name">
                     <FormLabel color={'white'}>Project Name</FormLabel>
-                    <Input onChange={handleChange} borderWidth={2} type="text" />
+                    <Input onChange={handleChange} borderWidth={2} type="text" value={formData.name} />
                 </FormControl>
                 <FormControl id="description">
                     <FormLabel color={'white'}>Description</FormLabel>
-                    <Textarea onChange={handleChange} borderWidth={2} type="text" resize={"none"} rows="5" />
+                    <Textarea onChange={handleChange} borderWidth={2} type="text" resize={"none"} rows="5" value={formData.description} />
                 </FormControl>
 
                 <Box>
@@ -37,8 +38,18 @@ export default function AddProjectForm(props) {
 
                 <FormControl id="link">
                     <FormLabel color={'white'}>Link to Code</FormLabel>
-                    <Input onChange={handleChange} borderWidth={2} type="text" />
+                    <Input onChange={handleChange} borderWidth={2} type="text" value={formData.link} />
                 </FormControl>
+
+                <FormControl id="type">
+                    <FormLabel color={'white'}>Type</FormLabel>
+                    <Select placeholder='Select option' onChange={handleChange}>
+                        <option value={"FE"}>Front End</option>
+                        <option value={"BE"}>Back End</option>
+                        <option value={"FS"}>Full Stack</option>
+                    </Select>
+                </FormControl>
+
                 <Stack spacing={10}>
                     <Button onClick={handleSubmit}
                         bg={'white'}
