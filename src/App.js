@@ -13,7 +13,6 @@ import PrivateRoute from "./Components/PrivatesRoutes";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserContext from './Context/UserContext';
 
-// 1. import `ChakraProvider` component
 import { ChakraProvider } from '@chakra-ui/react'
 
 

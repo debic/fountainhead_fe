@@ -1,23 +1,41 @@
-import { Avatar, Box, Center, Heading, Image, Stack, Text, useColorModeValue, HStack, Divider } from '@chakra-ui/react'
+import { Avatar, Box, Center, Heading, Stack, Text, useColorModeValue, Flex, Accordion,Button,
+    AccordionItem,
+    AccordionButton,
+    AccordionPanel,
+    AccordionIcon,CircularProgress,CircularProgressLabel,Image, Spacer } from '@chakra-ui/react'
 import * as React from 'react'
 
 export const ProductCard = (props) => {
     const { product, rootProps, rating } = props
     return (
-        <Center py={3}>
+        <Center py={20}>
             <Box
-                maxW={'2xl'}
-                w={'full'}
-                bg={useColorModeValue('white', 'gray.900')}
-                boxShadow={'2xl'}
-                rounded={'md'}
-                overflow={'hidden'}>
-                <Image
-                    src={
-                        'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-                    }
-                    layout={'fill'}
-                />
+                      maxW={'700px'}
+                      w={'full'}
+                      bg={useColorModeValue('white', 'gray.900')}
+                      boxShadow={'2xl'}
+                      rounded={'md'}
+                      p={10}
+                      overflow={'hidden'}>
+
+                <Box
+                  h={'500px'}
+                  bg={'gray.100'}
+                  mt={-6}
+                  mx={-6}
+                  mb={6}
+                  pos={'relative'}>
+    
+
+                <iframe src={"https://codesandbox.io/embed/damp-violet-0ybqks?fontsize=17&hidenavigation=0&theme=dark"}
+                        style={{width:"100%", height:"100%"}}
+                        title="damp-violet-0ybqks"
+                        allow= {"accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"}
+                        sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts  view = 'preview'">
+
+                 </iframe>
+
+                 </Box>
                 <Box p={6}>
                     <Stack>
                         <Heading
@@ -45,42 +63,131 @@ export const ProductCard = (props) => {
 
                     </Stack>
 
-                    <Divider />
 
-                    <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
-                        <Avatar
-                            src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
-                            alt={'Author'}
-                        />
-                        <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
-                            <Text fontWeight={600}>Achim Rolle</Text>
-                        </Stack>
-                        <HStack>
-                            <Box w='40px' h='40px' bg='yellow.200'>
-                                1
+                    <Accordion allowToggle mt={10}>
+
+                <AccordionItem py={10}> 
+                    <AccordionButton p={0} >
+                            <Box flex='1' textAlign='left'>
+                            <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
+                                    <Avatar
+                                    src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
+                                    alt={'Author'}/>
+                                    <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
+                                        <Text fontWeight={600}>Achim Rolle</Text>
+                            </Stack>
+                            </Stack>
                             </Box>
-                            <Box w='40px' h='40px' bg='red.200'>
-                                2
+
+                            <Spacer />
+                            <Flex> 
+                            <Center>
+                            <CircularProgress value={40} color='#69DB33'>
+                            <CircularProgressLabel>40%</CircularProgressLabel>
+                            </CircularProgress>
+                            <CircularProgress value={40} color='#FF9900'>
+                            <CircularProgressLabel>40%</CircularProgressLabel>
+                            </CircularProgress>
+                            <CircularProgress value={40} color='#24D0DB'>
+                            <CircularProgressLabel>40%</CircularProgressLabel>
+                            </CircularProgress>
+                            <CircularProgress value={40} color='#DF5EEA'>
+                            <CircularProgressLabel>40%</CircularProgressLabel>
+                            </CircularProgress>
+                            <CircularProgress value={40} color='#2D30C3'>
+                            <CircularProgressLabel>40%</CircularProgressLabel>
+                            </CircularProgress>
+                        
+                            <Image
+                                mx='5'
+                                borderRadius='full'
+                                boxSize='45px'
+                                src='https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'
+                                alt=''
+                                />
+                          
+                          <Text fontWeight={200}>Points</Text>
+                          </Center>
+                          </Flex>
+
+                        <AccordionIcon />
+                    </AccordionButton>
+                
+                    <AccordionPanel pb={4}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat.
+                    </AccordionPanel>
+                </AccordionItem>
+
+                <AccordionItem py={10}> 
+                    <AccordionButton p={0} >
+                            <Box flex='1' textAlign='left'>
+                            <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
+                                    <Avatar
+                                    src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
+                                    alt={'Author'}/>
+                                    <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
+                                        <Text fontWeight={600}>Achim Rolle</Text>
+                            </Stack>
+                            </Stack>
                             </Box>
-                            <Box w='40px' h='40px' bg='teal.200'>
-                                3
-                            </Box>
-                            <Box w='40px' h='40px' bg='purple.200'>
-                                4
-                            </Box>
-                            <Box w='40px' h='40px' bg='blue.200'>
-                                5
-                            </Box>
-                            {/* <Box h='40px' bg='blue.200'>
-                                Role
-                            </Box>
-                            <Box w='40px' h='40px' bg='blue.200'>
-                                Points
-                            </Box> */}
-                        </HStack>
-                    </Stack>
+
+                            <Spacer />
+                            <Flex> 
+                            <Center>
+                            <CircularProgress value={40} color='#69DB33'>
+                            <CircularProgressLabel>40%</CircularProgressLabel>
+                            </CircularProgress>
+                            <CircularProgress value={40} color='#FF9900'>
+                            <CircularProgressLabel>40%</CircularProgressLabel>
+                            </CircularProgress>
+                            <CircularProgress value={40} color='#24D0DB'>
+                            <CircularProgressLabel>40%</CircularProgressLabel>
+                            </CircularProgress>
+                            <CircularProgress value={40} color='#DF5EEA'>
+                            <CircularProgressLabel>40%</CircularProgressLabel>
+                            </CircularProgress>
+                            <CircularProgress value={40} color='#2D30C3'>
+                            <CircularProgressLabel>40%</CircularProgressLabel>
+                            </CircularProgress>
+                        
+                            <Image
+                                mx='5'
+                                borderRadius='full'
+                                boxSize='45px'
+                                src='https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'
+                                alt=''
+                                />
+                          
+                          <Text fontWeight={200}>Points</Text>
+                          </Center>
+                          </Flex>
+
+                        <AccordionIcon />
+                    </AccordionButton>
+                
+                    <AccordionPanel pb={4}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat.
+                    </AccordionPanel>
+                </AccordionItem>
+                
+                </Accordion>
                 </Box>
-
+                <Button  bg={'#F6F6F6'}  variant={'outline'} >
+                    <Center>
+                        <Text>See more comments</Text>
+                    </Center>
+                </Button>
+                <Button  bg={'#F6F6F6'}  ml={'5%'} variant={'outline'} >
+                    <Center>
+                        <Text>Make a comment</Text>
+                    </Center>
+                </Button>
             </Box>
         </Center>
     )

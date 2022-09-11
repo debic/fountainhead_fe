@@ -7,8 +7,6 @@ export default function PrivateRoute({children}) {
 
    const { validate}=useUserContext()
 
-
-
     useEffect (()=>{validate()
     },[validate])
 

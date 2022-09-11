@@ -17,12 +17,11 @@ export default function UserContext({children}) {
     const validate = async ()=>{
         try {
             const res = await axios.get("http://localhost:8080/api/user/validate", {withCredentials: true}  ) 
-            if (!res.data.length) navigate("/")
+            // if (!res.data.length) navigate("/")
         } catch (error) {
             
         }
     }
-
 
     useEffect (()=>{validate()
     },[])
