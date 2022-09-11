@@ -1,17 +1,16 @@
-import { Avatar, Box, Center, Heading, Image, Stack, Text, useColorModeValue } from '@chakra-ui/react'
+import { Avatar, Box, Center, Heading, Image, Stack, Text, useColorModeValue, HStack, Divider } from '@chakra-ui/react'
 import * as React from 'react'
 
 export const ProductCard = (props) => {
-    const { product, rootProps } = props
+    const { product, rootProps, rating } = props
     return (
-        <Center py={6}>
+        <Center py={3}>
             <Box
-                maxW={'445px'}
+                maxW={'2xl'}
                 w={'full'}
                 bg={useColorModeValue('white', 'gray.900')}
                 boxShadow={'2xl'}
                 rounded={'md'}
-                // p={6}
                 overflow={'hidden'}>
                 <Image
                     src={
@@ -21,14 +20,6 @@ export const ProductCard = (props) => {
                 />
                 <Box p={6}>
                     <Stack>
-                        <Text
-                            color={'green.500'}
-                            textTransform={'uppercase'}
-                            fontWeight={800}
-                            fontSize={'sm'}
-                            letterSpacing={1.1}>
-                            Blog
-                        </Text>
                         <Heading
                             color={useColorModeValue('gray.700', 'white')}
                             fontSize={'2xl'}
@@ -42,7 +33,7 @@ export const ProductCard = (props) => {
                             et ea rebum.
                         </Text>
                     </Stack>
-                    <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
+                    <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
                         <Avatar
                             src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
                             alt={'Author'}
@@ -51,6 +42,42 @@ export const ProductCard = (props) => {
                             <Text fontWeight={600}>Achim Rolle</Text>
                             <Text color={'gray.500'}>Sep 08, 2022</Text>
                         </Stack>
+
+                    </Stack>
+
+                    <Divider />
+
+                    <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
+                        <Avatar
+                            src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
+                            alt={'Author'}
+                        />
+                        <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
+                            <Text fontWeight={600}>Achim Rolle</Text>
+                        </Stack>
+                        <HStack>
+                            <Box w='40px' h='40px' bg='yellow.200'>
+                                1
+                            </Box>
+                            <Box w='40px' h='40px' bg='red.200'>
+                                2
+                            </Box>
+                            <Box w='40px' h='40px' bg='teal.200'>
+                                3
+                            </Box>
+                            <Box w='40px' h='40px' bg='purple.200'>
+                                4
+                            </Box>
+                            <Box w='40px' h='40px' bg='blue.200'>
+                                5
+                            </Box>
+                            {/* <Box h='40px' bg='blue.200'>
+                                Role
+                            </Box>
+                            <Box w='40px' h='40px' bg='blue.200'>
+                                Points
+                            </Box> */}
+                        </HStack>
                     </Stack>
                 </Box>
 

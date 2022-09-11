@@ -2,22 +2,18 @@ import { Stack, Flex, VStack, useBreakpointValue } from '@chakra-ui/react';
 import { ProductCard } from '../Components/ProductCard';
 import SearchForm from '../Components/SearchForm';
 import { products } from '../Components/_data';
-import BackgroundImg from '../Img/background.jpg';
 
 export default function AllProjects() {
   return (
     <Flex
       w={'full'}
-      backgroundImage={
-        `url(${BackgroundImg})`
-      }
       backgroundSize={'cover'}
       backgroundPosition={'center center'}>
       <VStack
         w={'full'}
         justify={'center'}
         px={useBreakpointValue({ base: 4, md: 8 })}
-        bgGradient={'linear(to-r, blackAlpha.600, transparent)'}>
+      >
 
         <SearchForm />
 

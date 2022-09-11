@@ -44,19 +44,6 @@ export default function Home() {
             eiusmod tempor
           </Text>
         </Stack>
-
-        <Stack spacing={9}>
-          <Heading as='h2' size='2xl'>
-            Latest Projects
-          </Heading>
-
-          <ProductGrid>
-            {products.slice(0, 3).map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </ProductGrid>
-
-        </Stack>
       </VStack>
 
 
