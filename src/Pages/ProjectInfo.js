@@ -6,6 +6,7 @@ import { Avatar, Box, Center, Heading, Stack, Text, useColorModeValue, Flex, Acc
   AccordionIcon,CircularProgress,CircularProgressLabel,Image, Spacer } from '@chakra-ui/react'
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import Comments from '../Components/Comments';
 
 export default function ProjectInfo() {
 
@@ -84,7 +85,7 @@ export default function ProjectInfo() {
       </Stack>
    </Flex>
 </Center>
-<Comments project={project}/>  
+<Comments />  
 </Flex>
   )
 }
