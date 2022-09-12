@@ -12,9 +12,9 @@
 export default function ProductCard({ project }) {
 // const { setCurrentProject } = useContext(UserContext);
 
- function currentProjectInfo(){
-//     setCurrentProject(project)
- }
+//  function currentProjectInfo(){
+// //     setCurrentProject(project)
+//  }
 
     return (
         <Center py={20}>
