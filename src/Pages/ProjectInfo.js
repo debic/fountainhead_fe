@@ -33,12 +33,11 @@ export default function ProjectInfo() {
 
 
   return (
+    <Flex direction={'column'}>
     <Center py={20}>
    <Flex  maxW={'70vw'}> 
-
-    
      <Stack w={'45%'} mr={'15'}>
-            <Heading fontSize={'6xl'} as='samp' color={'white'} >{currentProject.name}</Heading>
+            <Heading fontSize={'6xl'} as='samp' color={'white'} >My Project Name</Heading>
                 <Text fontSize={'lg'} color={'white'}>
                 {currentProject.info}
                 </Text>
@@ -80,15 +79,12 @@ export default function ProjectInfo() {
               </CircularProgress>
               <CircularProgress size='70px' value={40} color='#DF5EEA'>
               <CircularProgressLabel color={'white'}>40%</CircularProgressLabel>
-              </CircularProgress>
-
-          </Center>
-              
+              </CircularProgress> 
+          </Center>    
       </Stack>
-
-      
-        
    </Flex>
 </Center>
+<Comments project={project}/>  
+</Flex>
   )
 }

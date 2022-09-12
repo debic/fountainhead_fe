@@ -27,27 +27,28 @@ function App() {
   return (
     <ChakraProvider>
       <BrowserRouter>
-        <UserContext>
-          <div className="App">
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/Login" element={<Login />} />
-              <Route path="/SignUp" element={<SignUp />} />
-              <Route element={<PrivateRoute />}>
-                <Route path="/AddProject" element={<AddProject />} />
-              </Route>
+      <UserContext >
+    <div className="App">
+      <Navbar/>
+      <Routes>
+             <Route path="/" element={<Home/>}/>
+             <Route path="/Login" element={<Login/>}/>
+             <Route path="/SignUp" element={<SignUp/>}/>
+             <Route path="/Profile" element={<PrivateRoute><Profile/></PrivateRoute>}/>
+             <Route path="/EditProfile" element={<EditProfile/>}/>
+             <Route path="/AllProjects" element={<AllProjects/>}/>
+             <Route path="/ProjectInfo/:id" element={<ProjectInfo/>}/>
+             <Route path="/ProjectInfo" element={<ProjectInfo/>}/>
+            <Route path="*" element={<h1>404 - Not Found!</h1>}/>
+            <Route path='donation' element={<Donation/>}/>
 
-              <Route path="/Profile" element={<Profile />} />
-              <Route path="/EditProfile" element={<EditProfile />} />
-              <Route path="/AllProjects" element={<AllProjects />} />
-              <Route path="/ProjectInfo/:id" element={<ProjectInfo />} />
 
-            </Routes>
-            <Footer />
-          </div>
-        </UserContext>
-      </BrowserRouter>
+        </Routes>
+        <Footer/>
+    </div>
+    </UserContext>
+    </BrowserRouter>
+   
     </ChakraProvider>
   );
 }

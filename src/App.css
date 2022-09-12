@@ -46,6 +46,9 @@ width: 50vw;
   width: 50vw;
 }
 
+.codeFont {
+  font-family: 'Source Code Pro', monospace;
+}
 
 @media only screen and (max-width: 850px) {
 
