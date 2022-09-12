@@ -40,7 +40,7 @@ function App() {
               <Route path="/Profile" element={<Profile />} />
               <Route path="/EditProfile" element={<EditProfile />} />
               <Route path="/AllProjects" element={<AllProjects />} />
-              <Route path="/ProjectInfo" element={<ProjectInfo />} />
+              <Route path="/ProjectInfo/:id" element={<ProjectInfo />} />
 
             </Routes>
             <Footer />

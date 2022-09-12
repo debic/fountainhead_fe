@@ -1,21 +1,46 @@
-import React from 'react'
+import React, {useEffect, useState}from 'react'
 import { Avatar, Box, Center, Heading, Stack, Text, useColorModeValue, Flex, Accordion,Button,
   AccordionItem,
   AccordionButton,
   AccordionPanel,
   AccordionIcon,CircularProgress,CircularProgressLabel,Image, Spacer } from '@chakra-ui/react'
-
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 export default function ProjectInfo() {
+
+  const[currentProject, setCurrentProject] = useState([]);
+
+  const location = useLocation();
+  const splitLocation = (location.pathname).toString().split("/");
+  const newLocation = splitLocation[2]
+  console.log(newLocation)
+
+
+  async function readProject(){
+    try{
+      const project = await axios.get(`http://localhost:8080/api/project//one/${newLocation}`)
+      setCurrentProject(project.data.data)
+    }catch(err){
+      console.log(err)
+    }
+  }
+
+
+  useEffect(() => {
+    readProject()
+  }, [])
+
+
   return (
     <Center py={20}>
    <Flex  maxW={'70vw'}> 
 
     
      <Stack w={'45%'} mr={'15'}>
-            <Heading fontSize={'6xl'} as='samp' color={'white'} >Project Name</Heading>
+            <Heading fontSize={'6xl'} as='samp' color={'white'} >{currentProject.name}</Heading>
                 <Text fontSize={'lg'} color={'white'}>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                {currentProject.info}
                 </Text>
       </Stack>
 

@@ -1,10 +1,11 @@
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { Box, Button, FormControl, FormLabel, Input, Link, Select, Stack, Text, Textarea, useBreakpointValue } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import axios from 'axios';
 
 export default function AddProjectForm(props) {
 
-    const [formData, setFormData] = useState({ name: "", description: "", link: "", type: "" });
+    const [formData, setFormData] = useState({ name: "", info: "", link: "", type: "" });
 
     function handleChange(e) {
         console.log([e.target.id], e.target.value);
@@ -14,8 +15,20 @@ export default function AddProjectForm(props) {
         }));
     }
 
-    function handleSubmit(e) {
-        e.preventDefault();
+    async function handleSubmit(e) {
+       
+        try {
+            e.preventDefault()
+            const res = await axios.post("http://localhost:8080/api/project", formData);
+            if (res.data.ok) {
+             
+   
+            }
+          } catch (err) {
+            console.log(err)
+
+      
+          }
     }
 
     return (
@@ -25,9 +38,9 @@ export default function AddProjectForm(props) {
                     <FormLabel color={'white'}>Project Name</FormLabel>
                     <Input onChange={handleChange} borderWidth={2} type="text" value={formData.name} />
                 </FormControl>
-                <FormControl id="description">
+                <FormControl id="info">
                     <FormLabel color={'white'}>Description</FormLabel>
-                    <Textarea onChange={handleChange} borderWidth={2} type="text" resize={"none"} rows="5" value={formData.description} />
+                    <Textarea onChange={handleChange} borderWidth={2} type="text" resize={"none"} rows="5" value={formData.info} />
                 </FormControl>
 
                 <Box>

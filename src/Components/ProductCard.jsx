@@ -167,9 +167,7 @@ export default function ProductCard({ project }) {
                     <Center>
                     <Link
                         to={`/ProjectInfo/${project.projectId}`}
-                        project={project}
-                       
-                        >See comments and vote</Link>
+                        project={project}>See comments and vote</Link>
                          
                     </Center>
                 </Button>
