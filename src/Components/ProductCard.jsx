@@ -168,7 +168,7 @@ export default function ProductCard({ project }) {
                     <Link
                         to={`/ProjectInfo/${project.projectId}`}
                         project={project}
-                        onClick={currentProjectInfo}
+                       
                         >See comments and vote</Link>
                          
                     </Center>
