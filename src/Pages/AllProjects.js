@@ -1,9 +1,23 @@
 import { Stack, Flex, VStack, useBreakpointValue } from '@chakra-ui/react';
+import axios from 'axios';
+import { useState } from 'react';
 import { ProductCard } from '../Components/ProductCard';
 import SearchForm from '../Components/SearchForm';
-import { products } from '../Components/_data';
 
 export default function AllProjects() {
+  const [currentProjects, setCurrentProjects] = useState([]);
+
+  async function searchProjects(formData) {
+    try {
+      const response = await axios.get("http://localhost:8080/api/project", {
+        params: formData
+      });
+      setCurrentProjects(response.data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <Flex
       w={'full'}
@@ -15,32 +29,21 @@ export default function AllProjects() {
         px={useBreakpointValue({ base: 4, md: 8 })}
       >
 
-        <SearchForm />
+        <SearchForm searchProjects={searchProjects} />
 
         <Stack
-          direction={{
-            base: 'column',
-            lg: 'row',
-          }}
-          align={{
-            lg: 'flex-start',
-          }}
-          spacing={{
-            base: '8',
-            md: '16',
-          }}
+          direction={{ base: 'column', lg: 'row' }}
+          align={{ lg: 'flex-start' }}
+          spacing={{ base: '8', md: '16' }}
         >
           <Stack
-            spacing={{
-              base: '8',
-              md: '10',
-            }}
+            spacing={{ base: '8', md: '10', }}
             flex="2"
           >
 
             <Stack spacing="6">
-              {products.map((item) => (
-                <ProductCard key={item.id} {...item} />
+              {currentProjects?.map((item) => (
+                <ProductCard key={item.projectId} {...item} />
               ))}
             </Stack>
           </Stack>
