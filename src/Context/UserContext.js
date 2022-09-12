@@ -1,6 +1,6 @@
 import { ModalContextProvider } from '@chakra-ui/react'
-import React from 'react'
-import { useContext, createContext, useEffect } from 'react'
+import React from 'react';
+import { useContext, createContext, useEffect,useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
@@ -11,7 +11,7 @@ import axios from 'axios';
  }
 
 export default function UserContext({children}) {
-
+    const [currentProject, setCurrentProject] = useState({});
     const navigate = useNavigate()
 
     const validate = async ()=>{
@@ -28,7 +28,7 @@ export default function UserContext({children}) {
 
   return (
     <div>
-        <context.Provider value={{ validate, navigate}}>
+        <context.Provider value={{ validate, navigate, currentProject, setCurrentProject}}>
         {children}
         </context.Provider>
     </div>

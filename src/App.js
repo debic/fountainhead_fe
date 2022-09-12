@@ -1,6 +1,5 @@
 import './App.css';
 import Navbar from './Components/Navbar';
-import * as React from 'react'
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
@@ -12,17 +11,18 @@ import Footer from './Components/Footer';
 import PrivateRoute from "./Components/PrivatesRoutes";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserContext from './Context/UserContext';
-
+import React, { useState, useEffect } from 'react';
 import { ChakraProvider } from '@chakra-ui/react'
 
 
 
 function App() {
+  
   return (
     <ChakraProvider>
       
       <BrowserRouter>
-      <UserContext>
+      <UserContext >
     <div className="App">
       <Navbar/>
       <Routes>
@@ -32,7 +32,8 @@ function App() {
              <Route path="/Profile" element={<PrivateRoute><Profile/></PrivateRoute>}/>
              <Route path="/EditProfile" element={<EditProfile/>}/>
              <Route path="/AllProjects" element={<AllProjects/>}/>
-             <Route path="/ProjectInfo" element={<ProjectInfo/>}/>
+             <Route path="/ProjectInfo/:id" element={<ProjectInfo/>}/>
+
 
 
         </Routes>

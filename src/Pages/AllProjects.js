@@ -9,12 +9,12 @@ import axios from 'axios';
 export default function AllProjects() {
   const [allprojects, setAllProjects] = useState([]);
 
-
+console.log(allprojects)
 
   async function readAllProjects(){
     try{
       const projects = await axios.get("http://localhost:8080/api/project")
-      //console.log(projects.data.data)
+      console.log(projects.data.data)
      setAllProjects(projects.data.data)
     }catch(err){
       console.log(err)

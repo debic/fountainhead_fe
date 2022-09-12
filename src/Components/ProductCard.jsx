@@ -1,13 +1,21 @@
-import { Avatar, Box, Center, Heading, Stack, Text, useColorModeValue, Flex, Accordion,Button,
+    import { Avatar, Box, Center, Heading, Stack, Text, useColorModeValue, Flex, Accordion,Button,
     AccordionItem,
     AccordionButton,
     AccordionPanel,
     AccordionIcon,CircularProgress,CircularProgressLabel,Image, Spacer } from '@chakra-ui/react'
-import * as React from 'react'
+    import React, { useContext } from 'react';
+    import { Link } from "react-router-dom";
+    import UserContext from '../Context/UserContext';
+
 
 
 export default function ProductCard({ project }) {
-    console.log(project)
+// const { setCurrentProject } = useContext(UserContext);
+
+ function currentProjectInfo(){
+//     setCurrentProject(project)
+ }
+
     return (
         <Center py={20}>
             <Box
@@ -157,7 +165,12 @@ export default function ProductCard({ project }) {
                 </Box>
                 <Button  bg={'#F6F6F6'}  variant={'outline'} >
                     <Center>
-                        <Text>See comments and vote</Text>
+                    <Link
+                        to={`/ProjectInfo/${project.projectId}`}
+                        project={project}
+                        onClick={currentProjectInfo}
+                        >See comments and vote</Link>
+                         
                     </Center>
                 </Button>
 
