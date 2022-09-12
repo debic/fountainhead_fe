@@ -9,7 +9,6 @@ import {
   Text,
   Stack,
   Button,
-  Link,
 
 } from '@chakra-ui/react';
 

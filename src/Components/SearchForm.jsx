@@ -13,11 +13,12 @@ export default function SearchForm({ searchProjects }) {
     }
 
     return (
-        <Stack maxW={'2xl'} align={'center'} spacing={6} w={'full'} sx={{ py: 6 }}>
+        <Stack maxW={'2xl'} align={'center'} spacing={6} w={'full'} sx={{ py: 6 }} >
             <Text
                 color={'white'}
                 fontWeight={700}
                 lineHeight={1.2}
+                pt={'10%'}
                 fontSize={useBreakpointValue({ base: '3xl', md: '4xl' })}>
                 Explore Projects
             </Text>
@@ -25,8 +26,7 @@ export default function SearchForm({ searchProjects }) {
                 <Box
                     w={'full'}
                     rounded={'lg'}
-                    border={'1px solid black'}
-                    p={8}>
+                >
                     <Stack spacing={4}>
                         <FormControl id="project">
 
@@ -41,7 +41,7 @@ export default function SearchForm({ searchProjects }) {
 
                         </FormControl>
 
-                        <HStack>
+                        <HStack pb={'10%'}>
                             <Box>
                                 <FormControl id="type">
                                     <Select placeholder='Select option' onChange={handleChange}>
@@ -52,7 +52,7 @@ export default function SearchForm({ searchProjects }) {
                                 </FormControl>
                             </Box>
                             <Box>
-                                <FormControl id="filter-2">
+                                <FormControl id="filter-2" color={"white"}>
                                     <Select placeholder='Select option' variant='outline'>
                                         <option value='option1'>Option 1</option>
                                         <option value='option2'>Option 2</option>
@@ -61,7 +61,7 @@ export default function SearchForm({ searchProjects }) {
                                 </FormControl>
                             </Box>
                             <Box>
-                                <FormControl id="filter-3">
+                                <FormControl id="filter-3" color={"white"}>
                                     <Select placeholder='Select option'>
                                         <option value='option1'>Option 1</option>
                                         <option value='option2'>Option 2</option>

@@ -19,14 +19,18 @@ export default function AllProjects() {
   }
 
   return (
+
     <Flex
       w={'full'}
       backgroundSize={'cover'}
-      backgroundPosition={'center center'}>
+      backgroundPosition={'center center'}
+    >
+
       <VStack
         w={'full'}
         justify={'center'}
         px={useBreakpointValue({ base: 4, md: 8 })}
+
       >
 
         <SearchForm searchProjects={searchProjects} />

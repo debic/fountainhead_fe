@@ -1,6 +1,5 @@
 import './App.css';
 import Navbar from './Components/Navbar';
-import * as React from 'react'
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
@@ -12,18 +11,19 @@ import Footer from './Components/Footer';
 import PrivateRoute from "./Components/PrivateRoute";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserContext from './Context/UserContext';
-
-// 1. import `ChakraProvider` component
+import React, { useState, useEffect } from 'react';
 import { ChakraProvider } from '@chakra-ui/react'
 import AddProject from './Pages/AddProject';
 
 
 
 function App() {
+  
   return (
     <ChakraProvider>
 
       <BrowserRouter>
+
         <UserContext>
           <div className="App">
             <Navbar />
@@ -40,13 +40,14 @@ function App() {
               <Route path="/Profile" element={<Profile />} />
               <Route path="/EditProfile" element={<EditProfile />} />
               <Route path="/AllProjects" element={<AllProjects />} />
-              <Route path="/ProjectInfo" element={<ProjectInfo />} />
+              <Route path="/ProjectInfo/:id" element={<ProjectInfo />} />
 
             </Routes>
             <Footer />
           </div>
         </UserContext>
       </BrowserRouter>
+
 
     </ChakraProvider>
   );
