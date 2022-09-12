@@ -12,6 +12,7 @@ import Footer from './Components/Footer';
 import PrivateRoute from "./Components/PrivatesRoutes";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserContext from './Context/UserContext';
+import Donation from './Components/Donation';
 
 import { ChakraProvider } from '@chakra-ui/react'
 
@@ -33,7 +34,8 @@ function App() {
              <Route path="/EditProfile" element={<EditProfile/>}/>
              <Route path="/AllProjects" element={<AllProjects/>}/>
              <Route path="/ProjectInfo" element={<ProjectInfo/>}/>
-
+            <Route path="*" element={<h1>404 - Not Found!</h1>}/>
+            <Route path='donation' element={<Donation/>}/>
 
         </Routes>
         <Footer/>
