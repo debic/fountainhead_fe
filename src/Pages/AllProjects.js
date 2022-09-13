@@ -1,7 +1,6 @@
 import { Stack, Flex, VStack, useBreakpointValue } from '@chakra-ui/react';
 import  ProductCard  from '../Components/ProductCard';
 import SearchForm from '../Components/SearchForm';
-import { products } from '../Components/_data';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 

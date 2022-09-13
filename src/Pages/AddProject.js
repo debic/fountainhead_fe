@@ -1,10 +1,9 @@
 import { Flex, Heading, Stack, Text, useBreakpointValue } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React from 'react'
 import AddProjectForm from '../Components/AddProjectForm'
 
 export default function AddProject() {
-    const [errorMessage, setErrorMessage] = useState("")
-    const [positiveMessage, setPositiveMessage] = useState("")
+ 
     return (
         <Flex
             align={'center'}

@@ -1,13 +1,7 @@
 import React, {useEffect, useState}from 'react'
 import { Center, Heading, Stack, Text, Flex,Button,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
- CircularProgress,CircularProgressLabel, useDisclosure } from '@chakra-ui/react'
+
+ CircularProgress,CircularProgressLabel } from '@chakra-ui/react'
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import VoteForm from '../Components/VoteForm';
@@ -25,7 +19,7 @@ export default function ProjectInfo() {
   const newLocation = splitLocation[2]
   console.log(newLocation)
 
-  const { isOpen, onOpen, onClose } = useUserContext();
+  const {  onOpen } = useUserContext();
 
   async function readProject(){
     try{
@@ -39,7 +33,7 @@ export default function ProjectInfo() {
 
   useEffect(() => {
     readProject()
-  }, [])
+  })
 
 
   return (

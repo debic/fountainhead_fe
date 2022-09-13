@@ -18,7 +18,6 @@ import axios from 'axios';
 export default function EditProfile() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
   const [profilePicture, setProfilePicture] = useState("")
   const [bio, setBio] = useState("")
 
@@ -32,7 +31,7 @@ export default function EditProfile() {
   async function handleEditProfile(e){
     try{
       e.preventDefault()
-      const res = await axios.post("http://localhost:8080/api/user/signup", {name,email,password, profilePicture,bio,oldPassword, newPassword,reNewPassword }, {withCredentials: true} )
+      const res = await axios.post("http://localhost:8080/api/user/signup", {name,email, profilePicture,bio,oldPassword, newPassword,reNewPassword }, {withCredentials: true} )
       if(res.data.ok){
   
       }

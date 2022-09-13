@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { Text } from "@chakra-ui/react";
-import { Avatar, AvatarBadge, AvatarGroup } from "@chakra-ui/react";
+import { Avatar} from "@chakra-ui/react";
 import { Code } from "@chakra-ui/react";
 import { extendTheme } from '@chakra-ui/react'
 

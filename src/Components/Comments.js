@@ -1,14 +1,5 @@
 import React, { useEffect } from "react"
-import { Input } from "@chakra-ui/react";
 import { Textarea } from "@chakra-ui/react";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
-} from "@chakra-ui/react";
-import { Box } from "@chakra-ui/react";
 import CodeIcon from "@mui/icons-material/Code";
 import axios from "axios";
 import { Button } from "@chakra-ui/react";

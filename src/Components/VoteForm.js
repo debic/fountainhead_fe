@@ -1,4 +1,4 @@
-import React , {useEffect, useState} from 'react'
+import React from 'react'
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { useUserContext } from '../Context/UserContext';
@@ -18,13 +18,12 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  useDisclosure,
   Button,
   
 } from '@chakra-ui/react';
 
   export default function VoteForm() {
-    const { isOpen, onOpen, onClose } = useUserContext();
+    const { isOpen, onClose } = useUserContext();
 
 
 

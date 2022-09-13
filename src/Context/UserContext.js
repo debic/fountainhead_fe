@@ -1,7 +1,5 @@
-import { ModalContextProvider } from '@chakra-ui/react'
 import React from 'react';
-import { useContext, createContext, useEffect,useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useContext, createContext,useState } from 'react'
 import {
    
     useDisclosure,
