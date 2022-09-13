@@ -11,17 +11,20 @@ export default function AllProjects() {
 
   const [currentProjects, setCurrentProjects] = useState([]);
 
-  async function searchProjects(formData) {
-    try {
-      const response = await axios.get("http://localhost:8080/api/project", {
-        params: formData
-      });
-      setCurrentProjects(response.data.data);
-    } catch (err) {
-      console.log(err);
+  // async function searchProjects(formData) {
+  //   try {
+  //     const response = await axios.get("http://localhost:8080/api/project", {
+  //       params: formData
+  //     });
+  //     setCurrentProjects(response.data.data);
+  //   } catch (err) {
+  //     console.log(err);
 
-    }
-  }
+  //   }
+  // }
+
+
+
 
   async function readAllProjects() {
     try {
@@ -32,26 +35,26 @@ export default function AllProjects() {
     }
   }
 
-  const {validate} = useUserContext();
+  const { validate } = useUserContext();
 
-  useEffect(() => {validate()}, [])
-  
-  async function readAllProjects(){
-    try{
+  useEffect(() => { validate() }, [])
+
+  async function readAllProjects() {
+    try {
       const projects = await axios.get("http://localhost:8080/api/project")
       console.log(projects.data.data)
       setCurrentProjects(projects.data.data)
-    }catch(err){
+    } catch (err) {
       console.log(err)
     }
   }
 
-  const searchByRating = async (sortBy, role)=>{
-    try{
-      const projects = await axios.get(`http://localhost:8080/api/project/sort?sortBy=${sortBy}&role=${role}`, {withCredentials: true})
+  const searchByRating = async (sortBy, role) => {
+    try {
+      const projects = await axios.get(`http://localhost:8080/api/project/sort?sortBy=${sortBy}&role=${role}`, { withCredentials: true })
       console.log(projects.data)
       setCurrentProjects(projects.data)
-    }catch(err){
+    } catch (err) {
       console.log(err)
     }
   }

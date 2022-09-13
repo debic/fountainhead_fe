@@ -16,7 +16,7 @@ import {
 import axios from 'axios';
 import { CheckIcon } from '@chakra-ui/icons';
 import { UserContext } from '../Context/UserContext';
-import { useContext, useState, useRef } from 'react';
+import { useContext, useState, useRef, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -32,6 +32,7 @@ export default function Profile() {
   const [userEmail, setUserEmail] = useState(email)
   const [userBio, setUserBio] = useState(bio)
   const [Userphoto, setUserPhoto] = useState(avatar)
+  const [projects, setprojects] = useState('second')
 
   const handleUsernameChange = (e) => setUserName(e.target.value)
   const handleEmailChange = (e) => setUserEmail(e.target.value)
@@ -73,6 +74,28 @@ export default function Profile() {
       .then(res => toast.success('Saved'))
       .catch(err => toast.error(err))
   }
+
+
+  useEffect(() => {
+
+    axios({
+      method: 'GET',
+      url: 'http://localhost:8080/api/project/userProjects',
+      withCredentials: true
+    })
+
+      .then(res => {
+        console.log(res)
+        
+
+
+      })
+
+
+
+
+  }, [])
+
 
   return (
 
@@ -172,6 +195,8 @@ export default function Profile() {
           </Stack>
 
         </Stack>
+
+
 
 
 

@@ -12,6 +12,18 @@ export default function SearchForm({ searchProjects, searchByRating }) {
         }));
     }
 
+
+    const searchProjects = () => {
+        axios({
+            method: 'GET',
+            url: 'http://localhost:8080/api/project',
+            data: {
+                type: formData.type
+            }
+        })
+    }
+
+
     return (
         <Stack maxW={'2xl'} align={'center'} spacing={6} w={'full'} sx={{ py: 6 }} >
             <Text
@@ -53,8 +65,8 @@ export default function SearchForm({ searchProjects, searchByRating }) {
                             </Box>
                             <Box>
                                 <FormControl id="filter-2" color={"white"}>
-                                    <Select placeholder='Client ratings' variant='outline' onChange={(e)=>{searchByRating(e.target.value, 'client')}}>
-                                    <option value='avgCreativity'>Most creative</option>
+                                    <Select placeholder='Client ratings' variant='outline' onChange={(e) => { searchByRating(e.target.value, 'client') }}>
+                                        <option value='avgCreativity'>Most creative</option>
                                         <option value='avgBestPractices'>Best practices</option>
                                         <option value='avgDesign'>Best design</option>
                                         <option value='avgBugs'>Least bugs</option>
@@ -63,7 +75,7 @@ export default function SearchForm({ searchProjects, searchByRating }) {
                             </Box>
                             <Box>
                                 <FormControl id="filter-3" color={"white"}>
-                                    <Select placeholder='Students ratings' onChange={(e)=>{searchByRating(e.target.value, 'student')}}>
+                                    <Select placeholder='Students ratings' onChange={(e) => { searchByRating(e.target.value, 'student') }}>
                                         <option value='avgCreativity'>Most creative</option>
                                         <option value='avgBestPractices'>Best practices</option>
                                         <option value='avgDesign'>Best design</option>
