@@ -19,7 +19,7 @@ export default function ProjectInfo() {
   const newLocation = splitLocation[2]
   console.log(newLocation)
 
-  const {  onOpen } = useUserContext();
+  const {  onOpen, makePayment } = useUserContext();
 
   async function readProject(){
     try{
@@ -33,7 +33,7 @@ export default function ProjectInfo() {
 
   useEffect(() => {
     readProject()
-  })
+  },[])
 
 
   return (
@@ -55,6 +55,7 @@ export default function ProjectInfo() {
                        Vote       
                     </Center>
                 </Button>
+                <Button onClick={makePayment}>Support Student</Button>
       </Stack>
 
 
@@ -98,14 +99,11 @@ export default function ProjectInfo() {
                     <CircularProgress size='70px' value={40} color='#DF5EEA'>
                     <CircularProgressLabel color={'white'}>40%</CircularProgressLabel>
                     </CircularProgress>
-
                 </Center>
-              
-
       </Stack>
    </Flex>
 </Center>
-<Comments />  
+<Comments/>  
 </Flex>
   )
 }

@@ -46,6 +46,11 @@ export default function Comments({ project }) {
   return (
     <div className="d-flex justify-content-center">
       <div className="d-flex w-75 flex-column">
+      <div className="bg-white rounded mb-2 pt-2 ps-1">
+            {allComments?.map((comment) => {
+                return <CommentItem key={comment.commentId} comment={comment}/>
+            })}
+        </div>
         <CodeIcon
           style={{ fontSize: 40 }}
           className="align-self-end me-2"
@@ -76,11 +81,7 @@ export default function Comments({ project }) {
         <Button colorScheme="teal" variant="solid" className="mb-2" onClick={leaveComment}>
           Comment
         </Button>
-        <div className="bg-white rounded mb-2">
-            {allComments?.map((comment) => {
-                return <CommentItem key={comment.commentId} comment={comment}/>
-            })}
-        </div>
+        
       </div>
     </div>
   );
