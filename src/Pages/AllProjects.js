@@ -34,17 +34,9 @@ export default function AllProjects() {
 
   const { validate } = useUserContext();
 
-  useEffect(() => { validate() }, [])
-
-  async function readAllProjects() {
-    try {
-      const projects = await axios.get("http://localhost:8080/api/project")
-      console.log(projects.data.data)
-      setCurrentProjects(projects.data.data)
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  useEffect(() => {
+    validate();
+  }, [])
 
   const searchByRating = async (sortBy, role) => {
     try {
