@@ -12,6 +12,12 @@ import {
   AvatarBadge,
   IconButton,
   Center,
+  Text,
+  List,
+  ListItem,
+  ListIcon,
+  OrderedList,
+  UnorderedList,
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { CheckIcon } from '@chakra-ui/icons';
@@ -19,20 +25,26 @@ import { UserContext } from '../Context/UserContext';
 import { useContext, useState, useRef, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MyProjects from './MyProjects';
 
 export default function Profile() {
   const inputRef = useRef(null)
 
   const data = useContext(UserContext)
+
   const { currentUser } = data
   const { name, email, bio, avatar } = currentUser
+
   const [userName, setUserName] = useState(name)
   const [userEmail, setUserEmail] = useState(email)
   const [userBio, setUserBio] = useState(bio)
   const [Userphoto, setUserPhoto] = useState(avatar)
+  const [projects, setProjects] = useState('')
+
   const handleUsernameChange = (e) => setUserName(e.target.value)
   const handleEmailChange = (e) => setUserEmail(e.target.value)
   const handleUserBioChange = (e) => setUserBio(e.target.value)
+
   const handleChangePhotoClick = () => inputRef.current.click()
 
   const handleFileChange = async (event) => {
@@ -71,25 +83,6 @@ export default function Profile() {
   }
 
 
-  useEffect(() => {
-
-    axios({
-      method: 'GET',
-      url: 'http://localhost:8080/api/project/userProjects',
-      withCredentials: true
-    })
-
-      .then(res => {
-        console.log(res)
-        
-
-
-      })
-
-
-
-
-  }, [])
 
 
   return (
@@ -99,6 +92,7 @@ export default function Profile() {
         minH={'50vh'}
         align={'center'}
         justify={'center'}
+        direction={'column'}
       >
         <Stack
           spacing={4}
@@ -192,9 +186,13 @@ export default function Profile() {
         </Stack>
 
 
+        <Heading as='h2' size='xl'>
+          My Projects
+        </Heading>
 
-
-
+        <Center p={5}>
+          <MyProjects projects={projects} />
+        </Center>
 
       </Flex>
 
