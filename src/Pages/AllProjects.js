@@ -3,12 +3,16 @@ import  ProductCard  from '../Components/ProductCard';
 import SearchForm from '../Components/SearchForm';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useUserContext } from '../Context/UserContext';
 
 
 export default function AllProjects() {
   const [allprojects, setAllProjects] = useState([]);
 
-console.log(allprojects)
+  const {validate} = useUserContext();
+
+  useEffect(() => {validate()}, [])
+  
 
   async function readAllProjects(){
     try{

@@ -19,7 +19,9 @@ export default function ProjectInfo() {
   const newLocation = splitLocation[2]
   console.log(newLocation)
 
-  const {  onOpen, makePayment } = useUserContext();
+  const {  onOpen, makePayment, validate } = useUserContext();
+
+  useEffect(() => {validate()},[])
 
   async function readProject(){
     try{
