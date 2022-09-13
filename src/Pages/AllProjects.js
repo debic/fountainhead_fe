@@ -1,7 +1,7 @@
 import { Stack, Flex, VStack, useBreakpointValue } from '@chakra-ui/react';
 import axios from 'axios';
 import { useState } from 'react';
-import { ProductCard } from '../Components/ProductCard';
+import ProductCard from '../Components/ProductCard';
 import SearchForm from '../Components/SearchForm';
 
 export default function AllProjects() {
@@ -46,8 +46,8 @@ export default function AllProjects() {
           >
 
             <Stack spacing="6">
-              {currentProjects?.map((item) => (
-                <ProductCard key={item.projectId} {...item} />
+              {currentProjects?.map((project) => (
+                <ProductCard key={project.projectId} project={project} />
               ))}
             </Stack>
           </Stack>

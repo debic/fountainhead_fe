@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export default function AddProjectForm(props) {
 
-    const [formData, setFormData] = useState({ name: "", info: "", link: "", type: "" });
+    const [formData, setFormData] = useState({ name: "", info: "", iframe: "", type: "" });
 
     function handleChange(e) {
         console.log([e.target.id], e.target.value);
@@ -16,19 +16,19 @@ export default function AddProjectForm(props) {
     }
 
     async function handleSubmit(e) {
-       
+
         try {
             e.preventDefault()
             const res = await axios.post("http://localhost:8080/api/project", formData);
             if (res.data.ok) {
-             
-   
+
+
             }
-          } catch (err) {
+        } catch (err) {
             console.log(err)
 
-      
-          }
+
+        }
     }
 
     return (
@@ -51,7 +51,7 @@ export default function AddProjectForm(props) {
 
                 <FormControl id="link">
                     <FormLabel color={'white'}>Link to Code</FormLabel>
-                    <Input onChange={handleChange} borderWidth={2} type="text" value={formData.link} />
+                    <Input onChange={handleChange} borderWidth={2} type="text" value={formData.iframe} />
                 </FormControl>
 
                 <FormControl id="type">
