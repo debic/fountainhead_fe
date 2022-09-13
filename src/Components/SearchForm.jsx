@@ -13,15 +13,6 @@ export default function SearchForm({ searchProjects, searchByRating }) {
     }
 
 
-    const searchProjects = () => {
-        axios({
-            method: 'GET',
-            url: 'http://localhost:8080/api/project',
-            data: {
-                type: formData.type
-            }
-        })
-    }
 
 
     return (
