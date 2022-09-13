@@ -1,6 +1,5 @@
 import React, {useEffect, useState}from 'react'
 import { Center, Heading, Stack, Text, Flex,Button,
-
  CircularProgress,CircularProgressLabel } from '@chakra-ui/react'
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
@@ -13,18 +12,29 @@ import Comments from '../Components/Comments';
 export default function ProjectInfo() {
 
   const[currentProject, setCurrentProject] = useState([]);
-
+  const [currentProjectRaiting, setCurrentProjectRaiting] = useState({});
   const location = useLocation();
   const splitLocation = (location.pathname).toString().split("/");
-  const newLocation = splitLocation[2]
-  console.log(newLocation)
+  const projectId = splitLocation[2]
+  
 
   const {  onOpen, makePayment } = useUserContext();
 
   async function readProject(){
     try{
-      const project = await axios.get(`http://localhost:8080/api/project/one/${newLocation}`)
+      const project = await axios.get(`http://localhost:8080/api/project/one/${projectId}`)
       setCurrentProject(project.data.data)
+    }catch(err){
+      console.log(err)
+    }
+  }
+
+
+  async function getRaitingFunction(){
+
+    try{
+      const project = await axios.get(`http://localhost:8080/api/project/vote/${projectId}`, {withCredentials:true})
+      setCurrentProjectRaiting(project.data.clientVotes)
     }catch(err){
       console.log(err)
     }
@@ -33,6 +43,7 @@ export default function ProjectInfo() {
 
   useEffect(() => {
     readProject()
+    getRaitingFunction()
   },[])
 
 
@@ -45,8 +56,6 @@ export default function ProjectInfo() {
     
       <Stack w={'45%'} mr={'15'}>
                <Heading fontSize={'6xl'} as='samp' color={'white'} >{currentProject.name}</Heading>
-
-   
                 <Text fontSize={'lg'} color={'white'}>
                 {currentProject.info}
                 </Text>
@@ -66,18 +75,18 @@ export default function ProjectInfo() {
    
                 <Center>
               
-                    <Text color={'white'} fontSize={'xl'} mr={'10'} fontWeight={400}>Profesionals Raiting</Text>
-                   <CircularProgress size='70px' value={40} color='#69DB33'>
-                    <CircularProgressLabel color={'white'}>40%</CircularProgressLabel>
+                    <Text color={'white'} fontSize={'xl'} mr={'10'} fontWeight={400}>Students Raiting</Text>
+                   <CircularProgress size='70px' value={(currentProjectRaiting.avgBestPractices)*10} color='#69DB33'>
+                    <CircularProgressLabel color={'white'}>{currentProjectRaiting.avgBestPractices}</CircularProgressLabel>
                     </CircularProgress>
-                    <CircularProgress size='70px'  value={40} color='#FF9900'>
-                    <CircularProgressLabel color={'white'}>40%</CircularProgressLabel>
+                    <CircularProgress size='70px'  value={(currentProjectRaiting.avgBugs)*10} color='#FF9900'>
+                    <CircularProgressLabel color={'white'}>{currentProjectRaiting.avgBugs}</CircularProgressLabel>
                     </CircularProgress>
-                    <CircularProgress size='70px'  value={40} color='#24D0DB'>
-                    <CircularProgressLabel color={'white'}>40%</CircularProgressLabel>
+                    <CircularProgress size='70px'  value={(currentProjectRaiting.avgCreativity)*10} color='#24D0DB'>
+                    <CircularProgressLabel color={'white'}>{currentProjectRaiting.avgCreativity}</CircularProgressLabel>
                     </CircularProgress>
-                    <CircularProgress size='70px'  value={40} color='#DF5EEA'>
-                    <CircularProgressLabel color={'white'}>40%</CircularProgressLabel>
+                    <CircularProgress size='70px'  value={(currentProjectRaiting.avgDesign)*10} color='#DF5EEA'>
+                    <CircularProgressLabel color={'white'}>{currentProjectRaiting.avgDesign}</CircularProgressLabel>
                     </CircularProgress>
 
                 </Center>
@@ -86,7 +95,7 @@ export default function ProjectInfo() {
 
                 <Center pt={'10'}>
                     
-                    <Text color={'white'} fontSize={'xl'} mr={'10'} fontWeight={400}>Student Raiting</Text>
+                    <Text color={'white'} fontSize={'xl'} mr={'10'} fontWeight={400}>Profesional Raiting</Text>
                     <CircularProgress size='70px'  value={40} color='#69DB33'>
                     <CircularProgressLabel color={'white'}>40%</CircularProgressLabel>
                     </CircularProgress>

@@ -54,7 +54,7 @@ import {
           bugs: bugs,
         }
         try{
-          const project = await axios.post(`http://localhost:8080/api/project/vote/${projectId}`, newVote)
+          const project = await axios.post(`http://localhost:8080/api/project/vote/${projectId}`, newVote, {withCredentials:true})
         }catch(err){
           console.log(err)
         }
