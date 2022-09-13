@@ -1,4 +1,5 @@
 import { Box, Button, FormControl, HStack, Input, InputGroup, InputRightElement, Select, Stack, Text, useBreakpointValue, useColorModeValue } from '@chakra-ui/react'
+import axios from 'axios';
 import React, { useState } from 'react'
 
 export default function SearchForm({ searchProjects, searchByRating }) {
@@ -10,6 +11,28 @@ export default function SearchForm({ searchProjects, searchByRating }) {
             ...previousState,
             [e.target.id]: e.target.value,
         }));
+    }
+
+    //  Search By Name
+    const searchProjectsByName = () => {
+        axios({
+            method: 'GET',
+            url: 'http://localhost:8080/api/project',
+            data: {
+                type: formData.name
+            }
+        })
+    }
+
+    //  Search By Name
+    const searchProjectsByType = () => {
+        axios({
+            method: 'GET',
+            url: 'http://localhost:8080/api/project',
+            data: {
+                type: formData.type
+            }
+        })
     }
 
     return (
@@ -33,7 +56,7 @@ export default function SearchForm({ searchProjects, searchByRating }) {
                             <InputGroup size='md'>
                                 <Input type="text" bg={useColorModeValue('white', 'white.700')} color={"#5458f6"} onChange={handleChange} id="name" />
                                 <InputRightElement width='5rem'>
-                                    <Button h='97%' size='md' onClick={() => searchProjects(formData)}>
+                                    <Button h='97%' size='md' onClick={() => searchProjectsByName(formData)}>
                                         {'Search'}
                                     </Button>
                                 </InputRightElement>
@@ -41,10 +64,13 @@ export default function SearchForm({ searchProjects, searchByRating }) {
 
                         </FormControl>
 
-                        <HStack pb={'10px'}>
+                        <HStack pb={'10%'}>
                             <Box>
                                 <FormControl id="type">
-                                    <Select placeholder='Select option' onChange={handleChange}>
+                                    <Select placeholder='Select option' onChange={() => {
+                                        handleChange();
+                                        searchProjectsByType(formData);
+                                    }}>
                                         <option value={"FE"}>Front End</option>
                                         <option value={"BE"}>Back End</option>
                                         <option value={"FS"}>Full Stack</option>
@@ -53,8 +79,8 @@ export default function SearchForm({ searchProjects, searchByRating }) {
                             </Box>
                             <Box>
                                 <FormControl id="filter-2" color={"white"}>
-                                    <Select placeholder='Client ratings' variant='outline' onChange={(e)=>{searchByRating(e.target.value, 'client')}}>
-                                    <option value='avgCreativity'>Most creative</option>
+                                    <Select placeholder='Client ratings' variant='outline' onChange={(e) => { searchByRating(e.target.value, 'client') }}>
+                                        <option value='avgCreativity'>Most creative</option>
                                         <option value='avgBestPractices'>Best practices</option>
                                         <option value='avgDesign'>Best design</option>
                                         <option value='avgBugs'>Least bugs</option>
@@ -63,7 +89,7 @@ export default function SearchForm({ searchProjects, searchByRating }) {
                             </Box>
                             <Box>
                                 <FormControl id="filter-3" color={"white"}>
-                                    <Select placeholder='Students ratings' onChange={(e)=>{searchByRating(e.target.value, 'student')}}>
+                                    <Select placeholder='Students ratings' onChange={(e) => { searchByRating(e.target.value, 'student') }}>
                                         <option value='avgCreativity'>Most creative</option>
                                         <option value='avgBestPractices'>Best practices</option>
                                         <option value='avgDesign'>Best design</option>
