@@ -34,18 +34,20 @@ const theme = extendTheme({
   }, []);
 
   return (
-    <div className="d-flex bg-white mb-2 mt-2 ms-1">
+    <div className="d-flex bg-white mb-3 mt-2 ms-1">
       <div>
         <Avatar name={user?.name} src={user?.avatar} />
-        <Text textStyle='h1' className="ms-2">{user?.name}</Text>
       </div>
-      <div className="ms-2">
-        <Text bg="white" className="mt-2">
+      <div className="ms-1 d-flex flex-column">
+  <div className="ms-2">
+        <span><b>{user?.name}</b></span>
+        <span className="ms-2">
           {comment?.comment}
-        </Text>
-        <Code bg="white" className="mt-1 border rounded">
+        </span>
+        </div>
+        <Code bg="white" className={comment?.code?"mt-1 ms-2 border rounded me-2":'undefined'}>
           {comment?.code}
-        </Code>
+        </Code> 
       </div>
     </div>
   );

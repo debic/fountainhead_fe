@@ -3,7 +3,7 @@ import { Flex, Box, FormControl, FormLabel, Input, Stack, Button, Heading, Text 
 import { useState } from 'react';
 import axios from 'axios';
 import { useUserContext } from '../Context/UserContext';
-
+import GoogleGithub from './googleGithub';
 export default function Login() {
 
   const [email, setEmail] = useState("")
@@ -18,7 +18,7 @@ export default function Login() {
       const res = await axios.post("http://localhost:8080/api/user/login", { email, password }, { withCredentials: true });
       if (res.data.ok) {
         setCurrentUser(res.data.user);
-        console.log(res.data.user);
+        // console.log(res.data.user);
         localStorage.setItem("user", JSON.stringify(res.data.user));
         setErrorMessage("");
         setPositiveMessage("Welcome!");
@@ -30,14 +30,10 @@ export default function Login() {
 
     }
   }
-
-
   return (
     <div className='LoginPage'>
       <div className='LoginPage_image'>
-
       </div>
-
       <div className='LoginPage_form'>
         <Flex
           minH={'90vh'}
@@ -74,6 +70,7 @@ export default function Login() {
                   >
                     Sign in
                   </Button>
+                  <GoogleGithub />
                 </Stack>
               </Stack>
             </Box>
