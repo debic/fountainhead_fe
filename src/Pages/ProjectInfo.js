@@ -12,6 +12,8 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import VoteForm from '../Components/VoteForm';
 import { useUserContext } from '../Context/UserContext';
+import Comments from '../Components/Comments';
+
 
 
 export default function ProjectInfo() {
@@ -41,12 +43,19 @@ export default function ProjectInfo() {
 
 
   return (
+    <Flex direction={'column'}>
     <Center py={20}>
+<<<<<<< HEAD
     <Flex  maxW={'70vw'}> 
 
     
       <Stack w={'45%'} mr={'15'}>
                <Heading fontSize={'6xl'} as='samp' color={'white'} >{currentProject.name}</Heading>
+=======
+   <Flex  maxW={'70vw'}> 
+     <Stack w={'45%'} mr={'15'}>
+            <Heading fontSize={'6xl'} as='samp' color={'white'} >My Project Name</Heading>
+>>>>>>> ab0ca12a2de8f9f5d18a7068df574c39cda7bafb
                 <Text fontSize={'lg'} color={'white'}>
                 {currentProject.info}
                 </Text>
@@ -82,6 +91,7 @@ export default function ProjectInfo() {
                 </Center>
 
 
+<<<<<<< HEAD
                 <Center pt={'10'}>
                     
                     <Text color={'white'} fontSize={'xl'} mr={'10'} fontWeight={400}>Student Raiting</Text>
@@ -100,11 +110,28 @@ export default function ProjectInfo() {
 
                 </Center>
               
+=======
+              <Center pt={'10'}>
+              
+              <Text color={'white'} fontSize={'xl'} mr={'10'} fontWeight={400}>Student Raiting</Text>
+             <CircularProgress size='70px'  value={40} color='#69DB33'>
+              <CircularProgressLabel color={'white'}>40%</CircularProgressLabel>
+              </CircularProgress>
+              <CircularProgress size='70px'  value={40} color='#FF9900'>
+              <CircularProgressLabel color={'white'}>40%</CircularProgressLabel>
+              </CircularProgress>
+              <CircularProgress size='70px'  value={40} color='#24D0DB'>
+              <CircularProgressLabel color={'white'}>40%</CircularProgressLabel>
+              </CircularProgress>
+              <CircularProgress size='70px' value={40} color='#DF5EEA'>
+              <CircularProgressLabel color={'white'}>40%</CircularProgressLabel>
+              </CircularProgress> 
+          </Center>    
+>>>>>>> ab0ca12a2de8f9f5d18a7068df574c39cda7bafb
       </Stack>
-
-      
-        
    </Flex>
 </Center>
+<Comments />  
+</Flex>
   )
 }
