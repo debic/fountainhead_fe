@@ -18,13 +18,13 @@ import { CheckIcon } from '@chakra-ui/icons';
 import { UserContext } from '../Context/UserContext';
 import { useContext, useState, useRef } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Profile() {
   const inputRef = useRef(null)
 
   const data = useContext(UserContext)
   const { currentUser } = data
-  // console.log(currentUser)
 
   const { name, email, bio, avatar } = currentUser
 
@@ -45,7 +45,6 @@ export default function Profile() {
       const fileObj = event.target.files && event.target.files[0]
       const formData = new FormData();
       formData.append("photo", fileObj);
-      console.log(formData)
       const res = await axios.patch('http://localhost:8080/api/user/updatePicture', formData, {
         headers: {
           "content-type": "multipart/form-data"
@@ -53,21 +52,27 @@ export default function Profile() {
         withCredentials: true
       });
 
-      setUserPhoto(res)
-    
-      console.log(res)
-      window.location.reload()
-
+      setUserPhoto(res.data.data)
     } catch (err) {
       console.log(err)
+      toast.error('Something Went Wrong')
     }
   };
 
-
-
-
-
-
+  const handleProfileEdit = async () => {
+    axios({
+      method: 'PATCH',
+      url: 'http://localhost:8080/api/user/updateMe',
+      data: {
+        name: userName,
+        email: userEmail,
+        bio: userBio
+      },
+      withCredentials: true
+    })
+      .then(res => toast.success('Saved'))
+      .catch(err => toast.error(err))
+  }
 
   return (
 
@@ -116,6 +121,7 @@ export default function Profile() {
 
             </Stack>
 
+
           </FormControl>
           <FormControl id="userName" isRequired>
             <FormLabel>User name</FormLabel>
@@ -153,6 +159,7 @@ export default function Profile() {
           <Stack spacing={6} direction={['column', 'row']}>
 
             <Button
+              onClick={handleProfileEdit}
               bg={'green.500'}
               color={'white'}
               w="full"
