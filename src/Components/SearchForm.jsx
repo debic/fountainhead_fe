@@ -53,19 +53,21 @@ export default function SearchForm({ searchProjects }) {
                             </Box>
                             <Box>
                                 <FormControl id="filter-2" color={"white"}>
-                                    <Select placeholder='Select option' variant='outline'>
-                                        <option value='option1'>Option 1</option>
-                                        <option value='option2'>Option 2</option>
-                                        <option value='option3'>Option 3</option>
+                                    <Select placeholder='Client ratings' variant='outline' onChange={(e)=>{searchByRating(e.target.value, 'client')}}>
+                                    <option value='avgCreativity'>Most creative</option>
+                                        <option value='avgBestPractices'>Best practices</option>
+                                        <option value='avgDesign'>Best design</option>
+                                        <option value='avgBugs'>Least bugs</option>
                                     </Select>
                                 </FormControl>
                             </Box>
                             <Box>
                                 <FormControl id="filter-3" color={"white"}>
-                                    <Select placeholder='Select option'>
-                                        <option value='option1'>Option 1</option>
-                                        <option value='option2'>Option 2</option>
-                                        <option value='option3'>Option 3</option>
+                                    <Select placeholder='Students ratings' onChange={(e)=>{searchByRating(e.target.value, 'student')}}>
+                                        <option value='avgCreativity'>Most creative</option>
+                                        <option value='avgBestPractices'>Best practices</option>
+                                        <option value='avgDesign'>Best design</option>
+                                        <option value='avgBugs'>Least bugs</option>
                                     </Select>
                                 </FormControl>
                             </Box>

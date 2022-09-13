@@ -45,7 +45,7 @@ const theme = extendTheme({
           {comment?.comment}
         </span>
         </div>
-        <Code bg="white" className={comment?.code?"mt-1 ms-2 border rounded me-2":'undefined'}>
+        <Code bg="white" color='green' className={comment?.code?"mt-1 ms-2 border rounded me-2":'undefined'}>
           {comment?.code}
         </Code> 
       </div>

@@ -3,9 +3,11 @@ import ProductCard from '../Components/ProductCard';
 import SearchForm from '../Components/SearchForm';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useUserContext } from '../Context/UserContext';
 
 
 export default function AllProjects() {
+
 
   const [currentProjects, setCurrentProjects] = useState([]);
 
@@ -30,6 +32,35 @@ export default function AllProjects() {
     }
   }
 
+  const {validate} = useUserContext();
+
+  useEffect(() => {validate()}, [])
+  
+  async function readAllProjects(){
+    try{
+      const projects = await axios.get("http://localhost:8080/api/project")
+      console.log(projects.data.data)
+     setAllProjects(projects.data.data)
+    }catch(err){
+      console.log(err)
+    }
+  }
+
+  const searchByRating = async (sortBy, role)=>{
+    try{
+      const projects = await axios.get(`http://localhost:8080/api/project/sort?sortBy=${sortBy}&role=${role}`, {withCredentials: true})
+      console.log(projects.data)
+     setAllProjects(projects.data)
+    }catch(err){
+      console.log(err)
+    }
+  }
+
+  useEffect(() => {
+    readAllProjects()
+  }, [])
+
+
   return (
 
     <Flex
@@ -45,7 +76,7 @@ export default function AllProjects() {
 
       >
 
-        <SearchForm searchProjects={searchProjects} />
+        <SearchForm searchByRating={searchByRating} searchProjects={searchProjects} />
 
         <Stack
           direction={{ base: 'column', lg: 'row' }}

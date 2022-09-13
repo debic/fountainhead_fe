@@ -27,16 +27,11 @@ export default function UserContextProvider({ children }) {
             setCurrentUser(res.data[0]);
             localStorage.setItem("user", JSON.stringify(res.data[0]));
             console.log('dat', res.data[0]);
-
             return res.data;
-
-
-
         } catch (error) {
             console.log(error);
         }
     }
-
 
     const makePayment = async () => {
         try{
