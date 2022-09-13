@@ -1,7 +1,7 @@
 import { Box, Button, FormControl, HStack, Input, InputGroup, InputRightElement, Select, Stack, Text, useBreakpointValue, useColorModeValue } from '@chakra-ui/react'
 import React, { useState } from 'react'
 
-export default function SearchForm({ searchProjects }) {
+export default function SearchForm({ searchProjects, searchByRating }) {
 
     const [formData, setFormData] = useState({ name: "", type: "" });
 

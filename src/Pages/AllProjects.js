@@ -40,7 +40,7 @@ export default function AllProjects() {
     try{
       const projects = await axios.get("http://localhost:8080/api/project")
       console.log(projects.data.data)
-     setAllProjects(projects.data.data)
+      setCurrentProjects(projects.data.data)
     }catch(err){
       console.log(err)
     }
@@ -50,7 +50,7 @@ export default function AllProjects() {
     try{
       const projects = await axios.get(`http://localhost:8080/api/project/sort?sortBy=${sortBy}&role=${role}`, {withCredentials: true})
       console.log(projects.data)
-     setAllProjects(projects.data)
+      setCurrentProjects(projects.data)
     }catch(err){
       console.log(err)
     }
