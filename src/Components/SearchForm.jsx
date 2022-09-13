@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 export default function SearchForm({ searchProjects }) {
 
-    const [formData, setFormData] = useState({ type: "" });
+    const [formData, setFormData] = useState({ name: "", type: "" });
 
     function handleChange(e) {
         setFormData((previousState) => ({
@@ -31,7 +31,7 @@ export default function SearchForm({ searchProjects }) {
                         <FormControl id="project">
 
                             <InputGroup size='md'>
-                                <Input type="text" bg={useColorModeValue('white', 'white.700')} color={"#5458f6"} />
+                                <Input type="text" bg={useColorModeValue('white', 'white.700')} color={"#5458f6"} onChange={handleChange} id="name" />
                                 <InputRightElement width='5rem'>
                                     <Button h='97%' size='md' onClick={() => searchProjects(formData)}>
                                         {'Search'}
