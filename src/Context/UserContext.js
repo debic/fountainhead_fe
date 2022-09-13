@@ -85,7 +85,7 @@ export default function UserContextProvider({ children }) {
 
     return (
         <div>
-            <UserContext.Provider value={{ validate, setCurrentUser, currentUser, gitHubAuth, gooleAuth, makePayment, setCurrentUser }}>
+            <UserContext.Provider value={{ validate, setCurrentUser, currentUser, gitHubAuth, gooleAuth, makePayment, setCurrentUser, isOpen, onOpen, onClose }}>
                 {children}
             </UserContext.Provider>
         </div>
