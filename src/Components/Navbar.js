@@ -5,13 +5,21 @@ import {
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { useUserContext } from '../Context/UserContext';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
   const { currentUser, setCurrentUser } = useUserContext();
   const navigate = useNavigate();
 
+ const logOutPassport = async()=>{
+  try{
+    await axios.get("http://localhost:8080/api/user/logout")
+  }catch(error){console.log(error)}
+ }
+
   function handleLogout() {
+    logOutPassport()
     localStorage.removeItem("user");
     setCurrentUser(null);
     navigate("/");

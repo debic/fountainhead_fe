@@ -2,7 +2,8 @@ import React from 'react'
 import { useState} from 'react';
 import axios from 'axios';
 import { FcGoogle } from 'react-icons/fc';
-
+import GoogleGithub from './googleGithub';
+import { useUserContext } from '../Context/UserContext';
 import {
   Flex,
   Box,
@@ -23,6 +24,8 @@ export default function SignUp() {
   const [password2, setPassword2] = useState("")
   const [errorMessage, setErrorMessage] = useState("")
   const [positiveMessage, setPositiveMessage] = useState("")
+
+
 
   async function handleSubmit(e){
     try{
@@ -97,11 +100,12 @@ export default function SignUp() {
               }}>
               Sign up
             </Button>
-            <Button  bg={'white'} onClick={handleSubmitGoogle} w={'full'} variant={'outline'} leftIcon={<FcGoogle />}>
+            {/* <Button  bg={'white'} onClick={handleSubmitGoogle} w={'full'} variant={'outline'} leftIcon={<FcGoogle />}>
               <Center>
                 <Text>Sign in with Google</Text>
               </Center>
-            </Button>
+            </Button> */}
+            <GoogleGithub/>
           </Stack>
         </Stack>
       </Box>

@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, Stack, VStack, useBreakpointValue, Flex, Heading } from '@chakra-ui/react';
 import BackgroundImg from '../Img/background.jpg';
+import { useUserContext } from '../Context/UserContext';
 
 export default function Home() {
+
+const {validate, currentUser} = useUserContext();
+
+useEffect(() => {validate()}, [])
+
   return (
     <Flex
       w={'full'}
