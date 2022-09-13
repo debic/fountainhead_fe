@@ -33,7 +33,7 @@ export default function ProjectInfo() {
 
   useEffect(() => {
     readProject()
-  })
+  },[])
 
 
   return (

@@ -8,7 +8,6 @@ import axios from 'axios';
 export default function AllProjects() {
   const [allprojects, setAllProjects] = useState([]);
 
-console.log(allprojects)
 
   async function readAllProjects(){
     try{
