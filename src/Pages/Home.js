@@ -17,13 +17,15 @@ useEffect(() => {validate()}, [])
         `url(${BackgroundImg})`
       }
       backgroundSize={'cover'}
-      backgroundPosition={'center center'}>
+      backgroundPosition={'center center'}
+   >
       <VStack
         w={'full'}
         justify={'flex-start'}
         align={'flex-start'}
         sx={{ px: 250, py: 150 }}
         px={useBreakpointValue({ base: 4, md: 8 })}
+        justifyContent={'center'}
       >
 
         <Stack maxW={'2xl'} align={'flex-start'} spacing={3}>

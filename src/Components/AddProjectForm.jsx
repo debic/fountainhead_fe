@@ -44,7 +44,7 @@ export default function AddProjectForm(props) {
                 </FormControl>
 
                 <Box>
-                    <Text fontWeight={200} fontSize={useBreakpointValue({ base: 'md', md: 'md' })} color={'white'}>
+                    <Text fontWeight={600} fontSize={useBreakpointValue({ base: 'md', md: 'md' })} color={'black'}>
                         Upload your code to <Link href='https://codesandbox.io' isExternal>CodeSandbox <ExternalLinkIcon mx='2px' /></Link> and paste the link in the field below
                     </Text>
                 </Box>
@@ -56,7 +56,7 @@ export default function AddProjectForm(props) {
 
                 <FormControl id="type">
                     <FormLabel color={'white'}>Type</FormLabel>
-                    <Select placeholder='Select option' onChange={handleChange}>
+                    <Select placeholder='Select option' onChange={handleChange} borderWidth={2}>
                         <option value={"FE"}>Front End</option>
                         <option value={"BE"}>Back End</option>
                         <option value={"FS"}>Full Stack</option>

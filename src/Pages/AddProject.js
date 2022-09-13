@@ -7,7 +7,9 @@ export default function AddProject() {
     return (
         <Flex
             align={'center'}
-            justify={'center'}>
+            justify={'center'}
+            py={100}
+            >
             <Stack spacing={8} py={6} px={6}>
                 <Stack align={'center'}>
                     <Heading fontSize={useBreakpointValue({ base: '3xl', md: '4xl' })} as='samp' color={'white'}>Add Project</Heading>

@@ -27,28 +27,34 @@ import {
 
 
 
-  const [sliderValue1, setSliderValue1] = React.useState(5)
+  const [creativity, setCreativity] = React.useState(5)
   const [showTooltip1, setShowTooltip1] = React.useState(false)
 
-  const [sliderValue2, setSliderValue2] = React.useState(5)
+  const [bestPractices, setBestPractices] = React.useState(5)
   const [showTooltip2, setShowTooltip2] = React.useState(false)
 
-  const [sliderValue3, setSliderValue3] = React.useState(5)
+  const [design, setDesign] = React.useState(5)
   const [showTooltip3, setShowTooltip3] = React.useState(false)
 
-  const [sliderValue4, setSliderValue4] = React.useState(5)
+  const [bugs, setBugs] = React.useState(5)
   const [showTooltip4, setShowTooltip4] = React.useState(false)
 
 
   const location = useLocation();
   const splitLocation = (location.pathname).toString().split("/");
-  const newLocation = splitLocation[2]
-
+  const projectId = splitLocation[2]
 
 
       async function voteFunction(){
+        console.log("vfbdhjk")
+        const newVote = {
+          creativity: creativity,
+          bestPractices: bestPractices,
+          design: design,
+          bugs: bugs,
+        }
         try{
-          const project = await axios.post(`http://localhost:8080/api/project/vote/${newLocation}`, )
+          const project = await axios.post(`http://localhost:8080/api/project/vote/${projectId}`, newVote)
         }catch(err){
           console.log(err)
         }
@@ -74,7 +80,7 @@ import {
       min={0}
       max={10}
       colorScheme='green'
-      onChange={(v) => setSliderValue1(v)}
+      onChange={(v) => setCreativity(v)}
       onMouseEnter={() => setShowTooltip1(true)}
       onMouseLeave={() => setShowTooltip1(false)}
       mb='10'
@@ -95,7 +101,7 @@ import {
         color='white'
         placement='top'
         isOpen={showTooltip1}
-        label={`${sliderValue1}`}
+        label={`${creativity}`}
       >
         <SliderThumb />
       </Tooltip>
@@ -109,7 +115,7 @@ import {
       min={0}
       max={10}
       colorScheme='green'
-      onChange={(v) => setSliderValue2(v)}
+      onChange={(v) => setBestPractices(v)}
       onMouseEnter={() => setShowTooltip2(true)}
       onMouseLeave={() => setShowTooltip2(false)}
       mb='10'
@@ -131,7 +137,7 @@ import {
         color='white'
         placement='top'
         isOpen={showTooltip2}
-        label={`${sliderValue2}`}
+        label={`${bestPractices}`}
       >
         <SliderThumb />
       </Tooltip>
@@ -147,7 +153,7 @@ import {
       min={0}
       max={10}
       colorScheme='green'
-      onChange={(v) => setSliderValue3(v)}
+      onChange={(v) => setDesign(v)}
       onMouseEnter={() => setShowTooltip3(true)}
       onMouseLeave={() => setShowTooltip3(false)}
       mb='10'
@@ -168,7 +174,7 @@ import {
         color='white'
         placement='top'
         isOpen={showTooltip3}
-        label={`${sliderValue3}`}
+        label={`${design}`}
       >
         <SliderThumb />
       </Tooltip>
@@ -184,7 +190,7 @@ import {
       min={0}
       max={10}
       colorScheme='green'
-      onChange={(v) => setSliderValue4(v)}
+      onChange={(v) => setBugs(v)}
       onMouseEnter={() => setShowTooltip4(true)}
       onMouseLeave={() => setShowTooltip4(false)}
       mb='10'
@@ -205,7 +211,7 @@ import {
         color='white'
         placement='top'
         isOpen={showTooltip4}
-        label={`${sliderValue4}`}
+        label={`${bugs}`}
       >
         <SliderThumb />
       </Tooltip>
@@ -214,7 +220,9 @@ import {
 
                 </ModalBody>
                 <ModalFooter>
-                  <Button onClick={onClose} onSubmit={voteFunction}>Close</Button>
+                  <Button onClick={onClose} >Close</Button>
+                  <Button onClick={voteFunction}>Vote</Button>
+
                 </ModalFooter>
               </ModalContent>
             </Modal>
