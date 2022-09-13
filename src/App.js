@@ -40,6 +40,7 @@ function App() {
              <Route path="/ProjectInfo" element={<ProjectInfo/>}/>
             <Route path="*" element={<h1>404 - Not Found!</h1>}/>
             <Route path='donation' element={<Donation/>}/>
+            <Route path='/AddProject' element={<AddProject/>}/>
         </Routes>
         <Footer/>
     </div>

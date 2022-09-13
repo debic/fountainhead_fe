@@ -25,19 +25,14 @@ export default function Profile() {
 
   const data = useContext(UserContext)
   const { currentUser } = data
-
   const { name, email, bio, avatar } = currentUser
-
   const [userName, setUserName] = useState(name)
   const [userEmail, setUserEmail] = useState(email)
   const [userBio, setUserBio] = useState(bio)
   const [Userphoto, setUserPhoto] = useState(avatar)
-  const [projects, setprojects] = useState('second')
-
   const handleUsernameChange = (e) => setUserName(e.target.value)
   const handleEmailChange = (e) => setUserEmail(e.target.value)
   const handleUserBioChange = (e) => setUserBio(e.target.value)
-
   const handleChangePhotoClick = () => inputRef.current.click()
 
   const handleFileChange = async (event) => {
