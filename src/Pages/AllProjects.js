@@ -6,23 +6,20 @@ import axios from 'axios';
 
 
 export default function AllProjects() {
-  const [allprojects, setAllProjects] = useState([]);
 
+  const [currentProjects, setCurrentProjects] = useState([]);
 
-  async function readAllProjects(){
-    try{
-      const projects = await axios.get("http://localhost:8080/api/project")
-      console.log(projects.data.data)
-     setAllProjects(projects.data.data)
-    }catch(err){
-      console.log(err)
+  async function searchProjects(formData) {
+    try {
+      const response = await axios.get("http://localhost:8080/api/project", {
+        params: formData
+      });
+      setCurrentProjects(response.data.data);
+    } catch (err) {
+      console.log(err);
+
     }
   }
-
-
-  useEffect(() => {
-    readAllProjects()
-  }, [])
 
   return (
 
@@ -30,8 +27,8 @@ export default function AllProjects() {
       w={'full'}
       backgroundSize={'cover'}
       backgroundPosition={'center center'}
-      >
-        
+    >
+
       <VStack
         w={'full'}
         justify={'center'}
@@ -39,32 +36,21 @@ export default function AllProjects() {
 
       >
 
-        <SearchForm/>
+        <SearchForm searchProjects={searchProjects} />
 
         <Stack
-          direction={{
-            base: 'column',
-            lg: 'row',
-          }}
-          align={{
-            lg: 'flex-start',
-          }}
-          spacing={{
-            base: '8',
-            md: '16',
-          }}
+          direction={{ base: 'column', lg: 'row' }}
+          align={{ lg: 'flex-start' }}
+          spacing={{ base: '8', md: '16' }}
         >
           <Stack
-            spacing={{
-              base: '8',
-              md: '10',
-            }}
+            spacing={{ base: '8', md: '10', }}
             flex="2"
           >
 
             <Stack spacing="6">
-              {allprojects.map((project) => (
-                <ProductCard key={project.id} {...project} project={project}/>
+              {currentProjects?.map((project) => (
+                <ProductCard key={project.projectId} project={project} />
               ))}
             </Stack>
           </Stack>
