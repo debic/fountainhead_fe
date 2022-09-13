@@ -1,5 +1,5 @@
 import { Stack, Flex, VStack, useBreakpointValue } from '@chakra-ui/react';
-import  ProductCard  from '../Components/ProductCard';
+import ProductCard from '../Components/ProductCard';
 import SearchForm from '../Components/SearchForm';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -18,6 +18,15 @@ export default function AllProjects() {
     } catch (err) {
       console.log(err);
 
+    }
+  }
+
+  async function readAllProjects() {
+    try {
+      const projects = await axios.get("http://localhost:8080/api/project")
+      setAllProjects(projects.data.data)
+    } catch (err) {
+      console.log(err)
     }
   }
 
@@ -60,5 +69,6 @@ export default function AllProjects() {
       </VStack>
     </Flex>
   );
+
 
 }
