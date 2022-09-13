@@ -6,23 +6,28 @@ import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@ch
 import { useUserContext } from '../Context/UserContext';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { NavigateBefore } from '@mui/icons-material';
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
   const { currentUser, setCurrentUser } = useUserContext();
   const navigate = useNavigate();
 
- const logOutPassport = async()=>{
-  try{
-    await axios.get("http://localhost:8080/api/user/logout")
-  }catch(error){console.log(error)}
- }
+  const logOutPassport = async () => {
+    try {
+      await axios.get("http://localhost:8080/api/user/logout")
+    } catch (error) { console.log(error) }
+  }
 
   function handleLogout() {
     logOutPassport()
     localStorage.removeItem("user");
     setCurrentUser(null);
     navigate("/");
+  }
+
+  const handleGoToProfile = () => {
+    navigate('/Profile')
   }
 
   return (
@@ -58,6 +63,17 @@ export default function Navbar() {
             Logo
           </Text>
 
+          <Button
+            onClick={handleGoToProfile}
+            ml={10}
+            colorScheme={'blackAlpha'}
+            position='absolute'
+            top={'8'}
+            right={'140'}
+          >
+            Profile
+          </Button>
+
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
           </Flex>
@@ -69,7 +85,7 @@ export default function Navbar() {
           direction={'row'}
           spacing={6}>
 
-          {!currentUser?.email ? (
+          {!currentUser ? (
             <>
               <Button
                 as={'a'}
