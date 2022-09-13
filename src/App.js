@@ -11,14 +11,13 @@ import Footer from './Components/Footer';
 import PrivateRoute from "./Components/PrivateRoute";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserContext from './Context/UserContext';
-
-import React, { useState, useEffect } from 'react';
+import AddProject from './Pages/AddProject';
+import React from 'react';
 
 import Donation from './Components/Donation';
 
 
 import { ChakraProvider } from '@chakra-ui/react'
-import AddProject from './Pages/AddProject';
 
 
 
@@ -39,6 +38,8 @@ function App() {
              <Route path="/AllProjects" element={<AllProjects/>}/>
              <Route path="/ProjectInfo/:id" element={<ProjectInfo/>}/>
              <Route path="/ProjectInfo" element={<ProjectInfo/>}/>
+             <Route path="/AddProject" element={<AddProject/>}/>
+
             <Route path="*" element={<h1>404 - Not Found!</h1>}/>
             <Route path='donation' element={<Donation/>}/>
 
