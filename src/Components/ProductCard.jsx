@@ -48,12 +48,12 @@ export default function ProductCard({ project }) {
                     </Stack>
                     <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
                         <Avatar
-                            src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
+                            src={currentUser?.avatar}
                             alt={'Author'}
                         />
                         <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
-                            <Text fontWeight={600}>Achim Rolle</Text>
-                            <Text color={'gray.500'}>Sep 08, 2022</Text>
+                            <Text fontWeight={600}>{currentUser?.name}</Text>
+                            <Text color={'gray.500'}>{currentProject?.created_at}</Text>
                         </Stack>
 
                     </Stack>
@@ -130,10 +130,6 @@ export default function ProductCard({ project }) {
                                         <CircularProgress value={40} color='#DF5EEA'>
                                             <CircularProgressLabel>40%</CircularProgressLabel>
                                         </CircularProgress>
-
-
-
-                                        <Text fontWeight={200}>Points</Text>
                                     </Center>
                                 </Flex>
 

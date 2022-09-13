@@ -44,9 +44,9 @@ export default function Comments({ project }) {
   }, []);
 
   return (
-    <div className="d-flex justify-content-center">
-      <div className="d-flex w-75 flex-column">
-      <div className="bg-white rounded mb-2 pt-2 ps-1">
+    <div className="d-flex justify-content-center mb-5">
+      <div className="d-flex w-60 flex-column">
+      <div className="bg-white rounded  p-5">
             {allComments?.map((comment) => {
                 return <CommentItem key={comment.commentId} comment={comment}/>
             })}
@@ -78,7 +78,7 @@ export default function Comments({ project }) {
           value={coding}
           onChange={(e) => setCoding(e.target.value)}
         />
-        <Button colorScheme="teal" variant="solid" className="mb-2" onClick={leaveComment}>
+        <Button colorScheme="green" variant="solid" className="mb-2" onClick={leaveComment}>
           Comment
         </Button>
         

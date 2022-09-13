@@ -7,6 +7,7 @@ import { useUserContext } from '../Context/UserContext';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { NavigateBefore } from '@mui/icons-material';
+import logo from '../Img/download.png';
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -40,7 +41,9 @@ export default function Navbar() {
         borderBottom={2}
         borderStyle={'solid'}
         borderColor={useColorModeValue('white', 'gray.900')}
-        align={'center'}>
+        align={'center'}
+        alignContent={'center'}
+        >
         <Flex
           flex={{ base: 1, md: 'auto' }}
           ml={{ base: -2 }}
@@ -52,15 +55,18 @@ export default function Navbar() {
             }
             variant={'ghost'}
             aria-label={'Toggle Navigation'}
+            alignContent={'center'}
+            align={'center'}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
+        <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}  alignContent={'center'} align={'center'}>
           <Text
+          alignContent={'center'}
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
             fontFamily={'heading'}
             fontSize={'xl'}
             color={useColorModeValue('white', 'white')}>
-            Logo
+            <img src={logo} width={50}/>
           </Text>
 
           <Text
