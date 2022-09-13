@@ -2,7 +2,12 @@ import { ModalContextProvider } from '@chakra-ui/react'
 import React from 'react';
 import { useContext, createContext, useEffect,useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import {
+   
+    useDisclosure,
 
+    
+  } from '@chakra-ui/react';
 import axios from 'axios';
 
 export const UserContext = createContext(null);
@@ -15,6 +20,8 @@ export function useUserContext() {
 
 export default function UserContextProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("user")) || '');
+    const { isOpen, onOpen, onClose } = useDisclosure()
+
     const validate = async () => {
         try {
 
@@ -30,7 +37,7 @@ export default function UserContextProvider({ children }) {
 
     return (
         <div>
-            <UserContext.Provider value={{ validate, setCurrentUser, currentUser }}>
+            <UserContext.Provider value={{ validate, setCurrentUser, currentUser, isOpen, onOpen, onClose  }}>
                 {children}
             </UserContext.Provider>
         </div>
