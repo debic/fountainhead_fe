@@ -41,7 +41,7 @@ export default function SearchForm({ searchProjects }) {
 
                         </FormControl>
 
-                        <HStack pb={'10%'}>
+                        <HStack pb={'10px'}>
                             <Box>
                                 <FormControl id="type">
                                     <Select placeholder='Select option' onChange={handleChange}>

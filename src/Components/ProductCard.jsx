@@ -1,24 +1,13 @@
 import {
-    Avatar, Box, Center, Heading, Stack, Text, useColorModeValue, Flex, Accordion, Button,
-    AccordionItem,
-    AccordionButton,
-    AccordionPanel,
-    AccordionIcon,CircularProgress,CircularProgressLabel, Image, Spacer } from '@chakra-ui/react'
-    import React, { useContext } from 'react';
-    import { Link } from "react-router-dom";
-    import UserContext from '../Context/UserContext';
-
-
+    Avatar, Box, Center, Heading, Stack, Text, useColorModeValue, Flex, Accordion, Button, AccordionItem,
+    AccordionButton, AccordionPanel, AccordionIcon, CircularProgress, CircularProgressLabel, Spacer
+} from '@chakra-ui/react'
+import React from 'react';
+import { Link } from "react-router-dom";
 
 export default function ProductCard({ project }) {
-    // const { setCurrentProject } = useContext(UserContext);
-
-    //  function currentProjectInfo(){
-    // //     setCurrentProject(project)
-    //  }
-
     return (
-        <Center py={20}>
+        <Center py={10}>
             <Box
                 maxW={'700px'}
                 w={'full'}
@@ -36,13 +25,11 @@ export default function ProductCard({ project }) {
                     mb={6}
                     pos={'relative'}>
 
-
                     <iframe src={project?.iframe}
                         style={{ width: "100%", height: "100%" }}
                         title="damp-violet-0ybqks"
                         allow={"accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"}
                         sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts  view = 'preview'">
-
                     </iframe>
 
                 </Box>
@@ -70,7 +57,6 @@ export default function ProductCard({ project }) {
                         </Stack>
 
                     </Stack>
-
 
                     <Accordion allowToggle mt={10}>
 
