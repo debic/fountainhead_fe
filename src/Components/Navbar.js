@@ -63,16 +63,23 @@ export default function Navbar() {
             Logo
           </Text>
 
-          <Button
+          <Text
             onClick={handleGoToProfile}
             ml={10}
-            colorScheme={'blackAlpha'}
-            position='absolute'
-            top={'8'}
-            right={'140'}
+            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+            fontFamily={'heading'}
+            fontSize={'xl'}
+            color={'white'}
+            right={'240'}
+            cursor = {'pointer'}
+            _hover={{
+              textDecoration: 'none',
+              color: "gray.800",
+            }}
+            fontWeight={400}
           >
             Profile
-          </Button>
+          </Text>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />

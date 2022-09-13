@@ -12,7 +12,6 @@ export default function AllProjects() {
   async function readAllProjects(){
     try{
       const projects = await axios.get("http://localhost:8080/api/project")
-      console.log(projects.data.data)
      setAllProjects(projects.data.data)
     }catch(err){
       console.log(err)
