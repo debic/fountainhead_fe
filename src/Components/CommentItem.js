@@ -34,7 +34,7 @@ const theme = extendTheme({
   }, []);
 
   return (
-    <div className="d-flex bg-white mb-3 mt-2 ms-1">
+    <div className="d-flex bg-white py-3 mb-3 mt-2 ms-1">
       <div>
         <Avatar name={user?.name} src={user?.avatar} />
       </div>

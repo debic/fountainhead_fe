@@ -6,17 +6,17 @@ import axios from 'axios';
 
 
 export default function AllProjects() {
+const [currentProjects, setCurrentProjects] = useState([]);
 
-  const [currentProjects, setCurrentProjects] = useState([]);
 
-  async function searchProjects(formData) {
-    try {
-      const response = await axios.get("http://localhost:8080/api/project", {
+  async function searchProjects(formData){
+    try{
+      const response = await axios.get("http://localhost:8080/api/project",{        
         params: formData
-      });
-      setCurrentProjects(response.data.data);
-    } catch (err) {
-      console.log(err);
+    })
+      setCurrentProjects(response.data.data)
+    }catch(err){
+      console.log(err)
 
     }
   }
