@@ -17,7 +17,13 @@ export default function ProjectInfo() {
   const location = useLocation();
   const splitLocation = (location.pathname).toString().split("/");
   const projectId = splitLocation[2]
-  const {  onOpen, makePayment } = useUserContext();
+  const {  onOpen, makePayment,validate } = useUserContext();
+
+  
+
+
+  useEffect(() => {validate()},[])
+
 
 
 
