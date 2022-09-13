@@ -13,7 +13,6 @@ export default function AllProjects() {
 
   useEffect(() => {validate()}, [])
   
-
   async function readAllProjects(){
     try{
       const projects = await axios.get("http://localhost:8080/api/project")
@@ -24,6 +23,15 @@ export default function AllProjects() {
     }
   }
 
+  const searchByRating = async (sortBy, role)=>{
+    try{
+      const projects = await axios.get(`http://localhost:8080/api/project/sort?sortBy=${sortBy}&role=${role}`, {withCredentials: true})
+      console.log(projects.data)
+     setAllProjects(projects.data)
+    }catch(err){
+      console.log(err)
+    }
+  }
 
   useEffect(() => {
     readAllProjects()
@@ -43,9 +51,7 @@ export default function AllProjects() {
         px={useBreakpointValue({ base: 4, md: 8 })}
 
       >
-
-        <SearchForm/>
-
+        <SearchForm searchByRating={searchByRating}/>
         <Stack
           direction={{
             base: 'column',
