@@ -1,59 +1,61 @@
-    import { Avatar, Box, Center, Heading, Stack, Text, useColorModeValue, Flex, Accordion,Button,
+import {
+    Avatar, Box, Center, Heading, Stack, Text, useColorModeValue, Flex, Accordion, Button,
     AccordionItem,
     AccordionButton,
     AccordionPanel,
-    AccordionIcon,CircularProgress,CircularProgressLabel, Spacer } from '@chakra-ui/react'
-    import React from 'react';
+    AccordionIcon,CircularProgress,CircularProgressLabel, Image, Spacer } from '@chakra-ui/react'
+    import React, { useContext } from 'react';
     import { Link } from "react-router-dom";
+    import UserContext from '../Context/UserContext';
 
 
 
 export default function ProductCard({ project }) {
-// const { setCurrentProject } = useContext(UserContext);
+    // const { setCurrentProject } = useContext(UserContext);
 
-//  function currentProjectInfo(){
-// //     setCurrentProject(project)
-//  }
+    //  function currentProjectInfo(){
+    // //     setCurrentProject(project)
+    //  }
 
     return (
         <Center py={20}>
             <Box
-                      maxW={'700px'}
-                      w={'full'}
-                      bg={useColorModeValue('white', 'gray.900')}
-                      boxShadow={'2xl'}
-                      rounded={'md'}
-                      p={10}
-                      overflow={'hidden'}>
+                maxW={'700px'}
+                w={'full'}
+                bg={useColorModeValue('white', 'gray.900')}
+                boxShadow={'2xl'}
+                rounded={'md'}
+                p={10}
+                overflow={'hidden'}>
 
                 <Box
-                  h={'500px'}
-                  bg={'gray.100'}
-                  mt={-6}
-                  mx={-6}
-                  mb={6}
-                  pos={'relative'}>
-    
+                    h={'500px'}
+                    bg={'gray.100'}
+                    mt={-6}
+                    mx={-6}
+                    mb={6}
+                    pos={'relative'}>
 
-                <iframe src={project.iframe}
-                        style={{width:"100%", height:"100%"}}
+
+                    <iframe src={project?.iframe}
+                        style={{ width: "100%", height: "100%" }}
                         title="damp-violet-0ybqks"
-                        allow= {"accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"}
+                        allow={"accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"}
                         sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts  view = 'preview'">
 
-                 </iframe>
+                    </iframe>
 
-                 </Box>
+                </Box>
                 <Box p={6}>
                     <Stack>
                         <Heading
                             color={useColorModeValue('gray.700', 'white')}
                             fontSize={'2xl'}
                             fontFamily={'body'}>
-                            {project.name}
+                            {project?.name}
                         </Heading>
                         <Text color={'gray.500'}>
-                        {project.info}
+                            {project?.info}
 
                         </Text>
                     </Stack>
@@ -72,102 +74,102 @@ export default function ProductCard({ project }) {
 
                     <Accordion allowToggle mt={10}>
 
-                <AccordionItem py={10}> 
-                    <AccordionButton p={0} >
-                            <Box flex='1' textAlign='left'>
-                            <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
-                                   
-                                    <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
-                                        <Text fontWeight={600}>Students Raiting</Text>
-                            </Stack>
-                            </Stack>
-                            </Box>
+                        <AccordionItem py={10}>
+                            <AccordionButton p={0} >
+                                <Box flex='1' textAlign='left'>
+                                    <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
 
-                            <Spacer />
-                            <Flex> 
-                            <Center>
-                            <CircularProgress value={40} color='#69DB33'>
-                            <CircularProgressLabel>40%</CircularProgressLabel>
-                            </CircularProgress>
-                            <CircularProgress value={40} color='#FF9900'>
-                            <CircularProgressLabel>40%</CircularProgressLabel>
-                            </CircularProgress>
-                            <CircularProgress value={40} color='#24D0DB'>
-                            <CircularProgressLabel>40%</CircularProgressLabel>
-                            </CircularProgress>
-                            <CircularProgress value={40} color='#DF5EEA'>
-                            <CircularProgressLabel>40%</CircularProgressLabel>
-                            </CircularProgress>
-                            
-                    
-                          
-                          <Text fontWeight={200}>Points</Text>
-                          </Center>
-                          </Flex>
+                                        <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
+                                            <Text fontWeight={600}>Students Rating</Text>
+                                        </Stack>
+                                    </Stack>
+                                </Box>
 
-                        <AccordionIcon />
-                    </AccordionButton>
-                
-                    <AccordionPanel pb={4}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                    commodo consequat.
-                    </AccordionPanel>
-                </AccordionItem>
+                                <Spacer />
+                                <Flex>
+                                    <Center>
+                                        <CircularProgress value={40} color='#69DB33'>
+                                            <CircularProgressLabel>40%</CircularProgressLabel>
+                                        </CircularProgress>
+                                        <CircularProgress value={40} color='#FF9900'>
+                                            <CircularProgressLabel>40%</CircularProgressLabel>
+                                        </CircularProgress>
+                                        <CircularProgress value={40} color='#24D0DB'>
+                                            <CircularProgressLabel>40%</CircularProgressLabel>
+                                        </CircularProgress>
+                                        <CircularProgress value={40} color='#DF5EEA'>
+                                            <CircularProgressLabel>40%</CircularProgressLabel>
+                                        </CircularProgress>
 
-                <AccordionItem py={10}> 
-                    <AccordionButton p={0} >
-                            <Box flex='1' textAlign='left'>
-                            <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
-                                    
-                                    <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
-                                        <Text fontWeight={600}>Profesionals Raiting</Text>
-                            </Stack>
-                            </Stack>
-                            </Box>
 
-                            <Spacer />
-                            <Flex> 
-                            <Center>
-                            <CircularProgress value={40} color='#69DB33'>
-                            <CircularProgressLabel>40%</CircularProgressLabel>
-                            </CircularProgress>
-                            <CircularProgress value={40} color='#FF9900'>
-                            <CircularProgressLabel>40%</CircularProgressLabel>
-                            </CircularProgress>
-                            <CircularProgress value={40} color='#24D0DB'>
-                            <CircularProgressLabel>40%</CircularProgressLabel>
-                            </CircularProgress>
-                            <CircularProgress value={40} color='#DF5EEA'>
-                            <CircularProgressLabel>40%</CircularProgressLabel>
-                            </CircularProgress>
-                
-                     
-                          
-                          <Text fontWeight={200}>Points</Text>
-                          </Center>
-                          </Flex>
 
-                        <AccordionIcon />
-                    </AccordionButton>
-                
-                    <AccordionPanel pb={4}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                    commodo consequat.
-                    </AccordionPanel>
-                </AccordionItem>
-                
-                </Accordion>
+                                        <Text fontWeight={200}>Points</Text>
+                                    </Center>
+                                </Flex>
+
+                                <AccordionIcon />
+                            </AccordionButton>
+
+                            <AccordionPanel pb={4}>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                commodo consequat.
+                            </AccordionPanel>
+                        </AccordionItem>
+
+                        <AccordionItem py={10}>
+                            <AccordionButton p={0} >
+                                <Box flex='1' textAlign='left'>
+                                    <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
+
+                                        <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
+                                            <Text fontWeight={600}>Profesionals Raiting</Text>
+                                        </Stack>
+                                    </Stack>
+                                </Box>
+
+                                <Spacer />
+                                <Flex>
+                                    <Center>
+                                        <CircularProgress value={40} color='#69DB33'>
+                                            <CircularProgressLabel>40%</CircularProgressLabel>
+                                        </CircularProgress>
+                                        <CircularProgress value={40} color='#FF9900'>
+                                            <CircularProgressLabel>40%</CircularProgressLabel>
+                                        </CircularProgress>
+                                        <CircularProgress value={40} color='#24D0DB'>
+                                            <CircularProgressLabel>40%</CircularProgressLabel>
+                                        </CircularProgress>
+                                        <CircularProgress value={40} color='#DF5EEA'>
+                                            <CircularProgressLabel>40%</CircularProgressLabel>
+                                        </CircularProgress>
+
+
+
+                                        <Text fontWeight={200}>Points</Text>
+                                    </Center>
+                                </Flex>
+
+                                <AccordionIcon />
+                            </AccordionButton>
+
+                            <AccordionPanel pb={4}>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                commodo consequat.
+                            </AccordionPanel>
+                        </AccordionItem>
+
+                    </Accordion>
                 </Box>
-                <Button  bg={'#F6F6F6'}  variant={'outline'} >
+                <Button bg={'#F6F6F6'} variant={'outline'} >
                     <Center>
-                    <Link
-                        to={`/ProjectInfo/${project.projectId}`}
-                        project={project}>See comments and vote</Link>
-                         
+                        <Link
+                            to={`/ProjectInfo/${project?.projectId}`}
+                            project={project}>See comments and vote</Link>
+
                     </Center>
                 </Button>
 
