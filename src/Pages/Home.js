@@ -2,12 +2,15 @@ import React, { useEffect } from 'react';
 import { Text, Stack, VStack, useBreakpointValue, Flex, Heading } from '@chakra-ui/react';
 import BackgroundImg from '../Img/background.jpg';
 import { useUserContext } from '../Context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
 
 const {validate, currentUser} = useUserContext();
+const navigate = useNavigate();
 
-useEffect(() => {validate()}, [])
+useEffect(() => {validate()
+navigate('/login')}, [])
 
   return (
     <Flex

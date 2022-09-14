@@ -22,11 +22,9 @@ export default function UserContextProvider({ children }) {
     const [currentUser, setCurrentUser] = useState('');
     const validate = async () => {
         try {
-
             const res = await axios.get("http://localhost:8080/api/user/validate", { withCredentials: true });
             setCurrentUser(res.data[0]);
             localStorage.setItem("user", JSON.stringify(res.data[0]));
-            console.log('dat', res.data[0]);
             return res.data;
         } catch (error) {
             console.log(error);
