@@ -31,7 +31,7 @@ export default function SignUp() {
   async function handleSubmit(e) {
     try {
       e.preventDefault()
-      const res = await axios.post("http://localhost:8080/api/user/signup", { name, email, password1, password2, role }, { withCredentials: true })
+      const res = await axios.post("http://localhost:8080/api/user/signup", { name, email, password1, password2 }, { withCredentials: true })
       if (res.data.ok) {
         setErrorMessage("")
         setPositiveMessage("Welcome!")

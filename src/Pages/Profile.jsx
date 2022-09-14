@@ -11,6 +11,13 @@ import {
   AvatarBadge,
   IconButton,
   Center,
+  Text,
+  List,
+  ListItem,
+  ListIcon,
+  OrderedList,
+  UnorderedList,
+  Select,
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { CheckIcon } from '@chakra-ui/icons';
@@ -48,6 +55,7 @@ export default function Profile() {
   const handleUsernameChange = (e) => setUserName(e.target.value)
   const handleEmailChange = (e) => setUserEmail(e.target.value)
   const handleUserBioChange = (e) => setUserBio(e.target.value)
+  const handleUserRoleChange = (e) => setUserBio(e.target.value)
   const handleChangePhotoClick = () => inputRef.current.click()
 
   const handleFileChange = async (event) => {
@@ -77,7 +85,7 @@ export default function Profile() {
       data: {
         name: userName,
         email: userEmail,
-        bio: userBio
+        bio: userBio,
       },
       withCredentials: true
     })
@@ -167,6 +175,14 @@ export default function Profile() {
               type="email"
             />
           </FormControl>
+
+          {/* <FormControl id="role">
+            <FormLabel>Role</FormLabel>
+            <Select placeholder='Select Role' onChange={handleUserRoleChange} value={userRole}>
+              <option value={"student"}>Student</option>
+              <option value={"client"}>Client</option>
+            </Select>
+          </FormControl> */}
 
           <Stack spacing={6} direction={['column', 'row']}>
 

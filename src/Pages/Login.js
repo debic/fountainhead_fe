@@ -18,7 +18,6 @@ export default function Login() {
       const res = await axios.post("http://localhost:8080/api/user/login", { email, password }, { withCredentials: true });
       if (res.data.ok) {
         setCurrentUser(res.data.user);
-        // console.log(res.data.user);
         localStorage.setItem("user", JSON.stringify(res.data.user));
         setErrorMessage("");
         setPositiveMessage("Welcome!");

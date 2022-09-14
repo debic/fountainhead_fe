@@ -1,11 +1,11 @@
 import React from 'react';
-import { useContext, createContext,useState } from 'react'
+import { useContext, createContext, useState } from 'react'
 import {
-   
+
     useDisclosure,
 
-    
-  } from '@chakra-ui/react';
+
+} from '@chakra-ui/react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
@@ -18,7 +18,7 @@ export function useUserContext() {
 
 
 export default function UserContextProvider({ children }) {
- 
+
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [currentUser, setCurrentUser] = useState('');
     const validate = async () => {
@@ -33,32 +33,32 @@ export default function UserContextProvider({ children }) {
     }
 
     const makePayment = async () => {
-        try{
-        const res = await axios.get("http://localhost:8080/api/user/donation", {withCredentials: true});
-        const {url} = res.data
-         window.location.href = url    
-    
-    }catch(err){
-            console.log(err)
-        }
-    }
-    
-    const gooleAuth = async () => {
-        try{
-            window.location.href = "http://localhost:8080/api/user/google"
- 
-    
-    }catch(err){
-            console.log(err)
-        }
-    }
-    
-    const gitHubAuth = async () => {
-        try{
-    
-    window.location.href = "http://localhost:8080/api/user/github"
+        try {
+            const res = await axios.get("http://localhost:8080/api/user/donation", { withCredentials: true });
+            const { url } = res.data
+            window.location.href = url
 
-    }catch(err){
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const gooleAuth = async () => {
+        try {
+            window.location.href = "http://localhost:8080/api/user/google"
+
+
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const gitHubAuth = async () => {
+        try {
+
+            window.location.href = "http://localhost:8080/api/user/github"
+
+        } catch (err) {
             console.log(err)
         }
     }
@@ -66,21 +66,21 @@ export default function UserContextProvider({ children }) {
     const location = useLocation();
     const splitLocation = (location.pathname).toString().split("/");
     const projectId = splitLocation[2]
-    const[currentProject, setCurrentProject] = useState([]);
+    const [currentProject, setCurrentProject] = useState([]);
     const [currentProjectRaitingStudents, setCurrentProjectRaitingStudents] = useState({});
     const [currentProjectRaitingProfesional, setCurrentProjectRaitingProfesional] = useState({});
 
-    async function getRaitingFunction(){
+    async function getRaitingFunction() {
         console.log("getRaitingFunction")
-        try{
-          const project = await axios.get(`http://localhost:8080/api/project/vote/${projectId}`, {withCredentials:true})
-          console.log(project)
-          setCurrentProjectRaitingStudents(project.data.studentVotes)
-          setCurrentProjectRaitingProfesional(project.data.clientVotes)
-        }catch(err){
-          console.log(err)
+        try {
+            const project = await axios.get(`http://localhost:8080/api/project/vote/${projectId}`, { withCredentials: true })
+            console.log(project)
+            setCurrentProjectRaitingStudents(project.data.studentVotes)
+            setCurrentProjectRaitingProfesional(project.data.clientVotes)
+        } catch (err) {
+            console.log(err)
         }
-      }
+    }
 
 
     return (

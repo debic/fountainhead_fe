@@ -2,13 +2,13 @@ import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { Box, Button, FormControl, FormLabel, Input, Link, Select, Stack, Text, Textarea, useBreakpointValue } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export default function AddProjectForm(props) {
 
     const [formData, setFormData] = useState({ name: "", info: "", iframe: "", type: "" });
 
     function handleChange(e) {
-        console.log([e.target.id], e.target.value);
         setFormData((previousState) => ({
             ...previousState,
             [e.target.id]: e.target.value,
@@ -16,18 +16,16 @@ export default function AddProjectForm(props) {
     }
 
     async function handleSubmit(e) {
-
         try {
             e.preventDefault()
-            const res = await axios.post("http://localhost:8080/api/project", formData);
+            const res = await axios.post("http://localhost:8080/api/project", formData, { withCredentials: true });
             if (res.data.ok) {
-
-
+                toast.success("The project was successfully added");
+            } else {
+                toast.error("There was an error adding the project");
             }
         } catch (err) {
             console.log(err)
-
-
         }
     }
 
@@ -45,11 +43,11 @@ export default function AddProjectForm(props) {
 
                 <Box>
                     <Text fontWeight={600} fontSize={useBreakpointValue({ base: 'md', md: 'md' })} color={'black'}>
-                        Upload your code to <Link href='https://codesandbox.io/s/github' isExternal>CodeSandbox <ExternalLinkIcon mx='2px' /></Link> and paste the link in the field below
+                        Upload your code to <Link href='https://codesandbox.io' isExternal>CodeSandbox <ExternalLinkIcon mx='2px' /></Link> and paste the link in the field below
                     </Text>
                 </Box>
 
-                <FormControl id="link">
+                <FormControl id="iframe">
                     <FormLabel color={'white'}>Link to Code</FormLabel>
                     <Input onChange={handleChange} borderWidth={2} type="text" value={formData.iframe} />
                 </FormControl>
