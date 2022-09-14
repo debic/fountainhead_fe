@@ -43,15 +43,15 @@ export default function SignUp() {
     }
   }
 
-  async function handleSubmitGoogle(e) {
-    try {
-      e.preventDefault()
-      const res = await axios.get("http://localhost:8080/api/user/google", { withCredentials: true })
-      console.log(res.data)
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // async function handleSubmitGoogle(e) {
+  //   try {
+  //     e.preventDefault()
+  //     const res = await axios.get("http://localhost:8080/api/user/google", { withCredentials: true })
+  //     console.log(res.data)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   return (
     <div className='LoginPage'>
@@ -93,9 +93,9 @@ export default function SignUp() {
                 </FormControl>
                 <Box>
                   <FormControl id="type">
-                    <Select placeholder='Select option' onChange={(e) => setRole(e.target.value)}>
+                    <Select placeholder='Choose role' onChange={(e) => setRole(e.target.value)} color={'white'}>
                       <option value={"student"}>Student</option>
-                      <option value={"professional"}>Professional</option>
+                      <option value={"client"}>Professional</option>
                     </Select>
                   </FormControl>
                 </Box>
@@ -114,7 +114,7 @@ export default function SignUp() {
                 <Text>Sign in with Google</Text>
               </Center>
             </Button> */}
-                  <GoogleGithub />
+                  <GoogleGithub/>
                 </Stack>
               </Stack>
             </Box>

@@ -11,21 +11,17 @@ import Comments from '../Components/Comments';
 
 export default function ProjectInfo() {
 
-  const[currentProject, setCurrentProject] = useState([]);
-  const [currentProjectRaitingStudents, setCurrentProjectRaitingStudents] = useState({});
-  const [currentProjectRaitingProfesional, setCurrentProjectRaitingProfesional] = useState({});
+
   const location = useLocation();
   const splitLocation = (location.pathname).toString().split("/");
   const projectId = splitLocation[2]
-  const {  onOpen, makePayment,validate } = useUserContext();
+  const {  onOpen, makePayment,validate, getRaitingFunction, currentProject, setCurrentProject, currentProjectRaitingStudents, setCurrentProjectRaitingStudents, currentProjectRaitingProfesional, setCurrentProjectRaitingProfesional  } = useUserContext();
 
   
 
-
-  useEffect(() => {validate()},[])
-
-
-
+  useEffect(() => {validate()
+    window.scrollTo(0, 0)
+  },[])
 
 
   async function readProject(){
@@ -38,17 +34,17 @@ export default function ProjectInfo() {
   }
 
 
-  async function getRaitingFunction(){
+  // async function getRaitingFunction(){
 
-    try{
-      const project = await axios.get(`http://localhost:8080/api/project/vote/${projectId}`, {withCredentials:true})
-      console.log(project)
-      setCurrentProjectRaitingStudents(project.data.studentVotes)
-      setCurrentProjectRaitingProfesional(project.data.clientVotes)
-    }catch(err){
-      console.log(err)
-    }
-  }
+  //   try{
+  //     const project = await axios.get(`http://localhost:8080/api/project/vote/${projectId}`, {withCredentials:true})
+  //     console.log(project)
+  //     setCurrentProjectRaitingStudents(project.data.studentVotes)
+  //     setCurrentProjectRaitingProfesional(project.data.clientVotes)
+  //   }catch(err){
+  //     console.log(err)
+  //   }
+  // }
 
 
   useEffect(() => {
@@ -61,10 +57,10 @@ export default function ProjectInfo() {
     <Flex direction={'column'} pb={'150'}>
     <Center py={'200'}>
 
-    <Flex  maxW={'60vw'}> 
+    <Flex  maxW={'70vw'}> 
 
     
-      <Stack w={'45%'} mr={'15'}>
+      <Stack w={'70%'} mr={'15'}>
                <Heading fontSize={'6xl'} as='samp' color={'white'} >{currentProject.name}</Heading>
                 <Text fontSize={'lg'} color={'white'}>
                 {currentProject.info}
@@ -83,43 +79,40 @@ export default function ProjectInfo() {
 
 
       <VoteForm/>
-            
-
-
-
+          
       <Stack w={'55%'} ml={'15'}>
    
                 <Center justifyContent='flex-end'>   
-                    <Text color={'white'} fontSize={'xl'} mr={'10'} fontWeight={400}>Profesional Raiting</Text>
-                   <CircularProgress size='70px' value={(currentProjectRaitingStudents.avgCreativity)*10} color='#69DB33'>
-                    <CircularProgressLabel color={'white'}>{currentProjectRaitingStudents.avgCreativity}</CircularProgressLabel>
+                    <Text color={'white'} fontSize={'xl'} mr={'10'} fontWeight={400}>Student Raiting</Text>
+                   <CircularProgress size='70px' value={(currentProjectRaitingStudents?.avgCreativity)*10} color='#69DB33'>
+                    <CircularProgressLabel color={'white'}>{currentProjectRaitingStudents?.avgCreativity}</CircularProgressLabel>
                     </CircularProgress>
-                    <CircularProgress size='70px'  value={(currentProjectRaitingStudents.avgBestPractices)*10} color='#FF9900'>
-                    <CircularProgressLabel color={'white'}>{currentProjectRaitingStudents.avgBestPractices}</CircularProgressLabel>
+                    <CircularProgress size='70px'  value={(currentProjectRaitingStudents?.avgBestPractices)*10} color='#FF9900'>
+                    <CircularProgressLabel color={'white'}>{currentProjectRaitingStudents?.avgBestPractices}</CircularProgressLabel>
                     </CircularProgress>
-                    <CircularProgress size='70px'  value={(currentProjectRaitingStudents.avgDesign)*10} color='#24D0DB'>
-                    <CircularProgressLabel color={'white'}>{currentProjectRaitingStudents.avgDesign}</CircularProgressLabel>
+                    <CircularProgress size='70px'  value={(currentProjectRaitingStudents?.avgDesign)*10} color='#24D0DB'>
+                    <CircularProgressLabel color={'white'}>{currentProjectRaitingStudents?.avgDesign}</CircularProgressLabel>
                     </CircularProgress>
-                    <CircularProgress size='70px'  value={(currentProjectRaitingStudents.avgBugs)*10} color='#DF5EEA'>
-                    <CircularProgressLabel color={'white'}>{currentProjectRaitingStudents.avgBugs}</CircularProgressLabel>
+                    <CircularProgress size='70px'  value={(currentProjectRaitingStudents?.avgBugs)*10} color='#DF5EEA'>
+                    <CircularProgressLabel color={'white'}>{currentProjectRaitingStudents?.avgBugs}</CircularProgressLabel>
                     </CircularProgress>
                 </Center>
 
 
 
                 <Center pt={'10'} justifyContent='flex-end'>
-                    <Text color={'white'} fontSize={'xl'} mr={'10'} fontWeight={400}>Student Raiting</Text>
-                    <CircularProgress size='70px'  value={(currentProjectRaitingProfesional.avgCreativity)*10} color='#69DB33'>
+                    <Text color={'white'} fontSize={'xl'} mr={'10'} fontWeight={400}>Profesional Raiting</Text>
+                    <CircularProgress size='70px'  value={(currentProjectRaitingProfesional?.avgCreativity)*10} color='#69DB33'>
                     <CircularProgressLabel color={'white'}>{currentProjectRaitingProfesional.avgCreativity}</CircularProgressLabel>
                     </CircularProgress>
-                    <CircularProgress size='70px'  value={(currentProjectRaitingProfesional.avgBestPractices)*10} color='#FF9900'>
-                    <CircularProgressLabel color={'white'}>{currentProjectRaitingProfesional.avgBestPractices}</CircularProgressLabel>
+                    <CircularProgress size='70px'  value={(currentProjectRaitingProfesional?.avgBestPractices)*10} color='#FF9900'>
+                    <CircularProgressLabel color={'white'}>{currentProjectRaitingProfesional?.avgBestPractices}</CircularProgressLabel>
                     </CircularProgress>
-                    <CircularProgress size='70px'  value={(currentProjectRaitingProfesional.avgDesign)*10} color='#24D0DB'>
-                    <CircularProgressLabel color={'white'}>{currentProjectRaitingProfesional.avgDesign}</CircularProgressLabel>
+                    <CircularProgress size='70px'  value={(currentProjectRaitingProfesional?.avgDesign)*10} color='#24D0DB'>
+                    <CircularProgressLabel color={'white'}>{currentProjectRaitingProfesional?.avgDesign}</CircularProgressLabel>
                     </CircularProgress>
-                    <CircularProgress size='70px' value={(currentProjectRaitingProfesional.avgBugs)*10} color='#DF5EEA'>
-                    <CircularProgressLabel color={'white'}>{currentProjectRaitingProfesional.avgBugs}</CircularProgressLabel>
+                    <CircularProgress size='70px' value={(currentProjectRaitingProfesional?.avgBugs)*10} color='#DF5EEA'>
+                    <CircularProgressLabel color={'white'}>{currentProjectRaitingProfesional?.avgBugs}</CircularProgressLabel>
                     </CircularProgress>
                 </Center>
       </Stack>
