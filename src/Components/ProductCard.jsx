@@ -90,14 +90,18 @@ export default function ProductCard({ project }) {
                     </iframe>
 
                 </Box>
-                <Box p={6}>
+                <Box py={3} pb={8} >
                     <Stack>
+                    <Link
+                            to={`/ProjectInfo/${project?.projectId}`}
+                            project={project}>
                         <Heading
                             color={useColorModeValue('gray.700', 'white')}
                             fontSize={'2xl'}
                             fontFamily={'body'}>
                             {project?.name}
                         </Heading>
+                        </Link>
                         <Text color={'gray.500'}>
                             {project?.info}
 
@@ -109,6 +113,7 @@ export default function ProductCard({ project }) {
                             alt={'Author'}
                         />
                         <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
+                            fontWeight={600}
                             <Text fontWeight={600}>{currentUser?.name}</Text>
                             <Text color={'gray.500'}>{currentProject?.created_at}</Text>
                         </Stack>
@@ -118,71 +123,83 @@ export default function ProductCard({ project }) {
 
                     <Accordion allowToggle mt={10}>
 
-                        <AccordionItem py={10}>
+                        <AccordionItem py={4}>
                             <AccordionButton p={0} >
 
-
-                            <Flex>
-                                    <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
+                            <Flex mr={'3'} alignItems='center'>
+                                
+                                    
                                         <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
-                                            <Text fontWeight={600}>Profesionals Rating</Text>
+                                            <Text fontWeight={600} pr='1'>Profesional Rating</Text>
                                         </Stack>
-                                    </Stack>
-                                    </Flex>
+                                   
+                                 
+          
                              
                                 <Flex>
                                     <Center>
-                                        <CircularProgress value={(currentProjectRaitingProfesional?.avgCreativity) * 10} color='#69DB33'>
+                                        <CircularProgress  size='40px'  value={(currentProjectRaitingProfesional?.avgCreativity) * 10} color='#69DB33'>
                                             <CircularProgressLabel >{currentProjectRaitingProfesional?.avgCreativity}</CircularProgressLabel>
                                         </CircularProgress>
-                                        <CircularProgress value={(currentProjectRaitingProfesional?.avgBestPractices) * 10} color='#FF9900'>
+                                        <CircularProgress  size='40px' value={(currentProjectRaitingProfesional?.avgBestPractices) * 10} color='#FF9900'>
                                             <CircularProgressLabel >{currentProjectRaitingProfesional?.avgBestPractices}</CircularProgressLabel>
                                         </CircularProgress>
-                                        <CircularProgress value={(currentProjectRaitingProfesional?.avgDesign) * 10} color='#24D0DB'>
+                                        <CircularProgress  size='40px' value={(currentProjectRaitingProfesional?.avgDesign) * 10} color='#24D0DB'>
                                             <CircularProgressLabel >{currentProjectRaitingProfesional?.avgDesign}</CircularProgressLabel>
                                         </CircularProgress>
-                                        <CircularProgress value={(currentProjectRaitingProfesional?.avgBugs) * 10} color='#DF5EEA'>
+                                        <CircularProgress  size='40px' value={(currentProjectRaitingProfesional?.avgBugs) * 10} color='#DF5EEA'>
                                             <CircularProgressLabel >{currentProjectRaitingProfesional?.avgBugs}</CircularProgressLabel>
                                         </CircularProgress>
 
                                     </Center>
                                 </Flex>
-
-                                <Spacer></Spacer>
-
+                                </Flex>
+                             
+                                <Flex  ml={'3'}  alignItems='center'>
                                 <Flex>
-                                <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
-                                <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
-                                    <Text fontWeight={600}>Students Raiting</Text>
-                                </Stack>
-                                </Stack>
+                                    <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
+                                        <Text fontWeight={600} pr='1'>Student Raiting</Text>
+                                    </Stack>
                                 </Flex>
 
                                 <Flex>
                                     <Center>
-                                        <CircularProgress value={(currentProjectRaitingStudents?.avgCreativity) * 10} color='#69DB33'>
+                                        <CircularProgress size='40px' value={(currentProjectRaitingStudents?.avgCreativity) * 10} color='#69DB33'>
                                             <CircularProgressLabel >{currentProjectRaitingStudents?.avgCreativity}</CircularProgressLabel>
                                         </CircularProgress>
-                                        <CircularProgress value={(currentProjectRaitingStudents?.avgBestPractices) * 10} color='#FF9900'>
+                                        <CircularProgress size='40px' value={(currentProjectRaitingStudents?.avgBestPractices) * 10} color='#FF9900'>
                                             <CircularProgressLabel >{currentProjectRaitingStudents?.avgBestPractices}</CircularProgressLabel>
                                         </CircularProgress>
-                                        <CircularProgress value={(currentProjectRaitingStudents?.avgDesign) * 10} color='#24D0DB'>
+                                        <CircularProgress size='40px' value={(currentProjectRaitingStudents?.avgDesign) * 10} color='#24D0DB'>
                                             <CircularProgressLabel >{currentProjectRaitingStudents?.avgDesign}</CircularProgressLabel>
                                         </CircularProgress>
-                                        <CircularProgress value={(currentProjectRaitingStudents?.avgBugs) * 10} color='#DF5EEA'>
+                                        <CircularProgress size='40px' value={(currentProjectRaitingStudents?.avgBugs) * 10} color='#DF5EEA'>
                                             <CircularProgressLabel >{currentProjectRaitingStudents?.avgBugs}</CircularProgressLabel>
                                         </CircularProgress>
                                     </Center>
                                 </Flex>
 
                                 <AccordionIcon />
+
+                                </Flex>
                             </AccordionButton>
 
-                            <AccordionPanel pb={4}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo consequat.
+                            <AccordionPanel py={10}>
+                                        <Center>
+                                                    <CircularProgress className='rating2' size='40px'  value={100} color='#69DB33'>
+                                                        <Text fontSize={'0.5rem'} color='black'>Best Practices</Text>
+                                                    </CircularProgress>
+                                                    <CircularProgress className='rating2' size='40px' value={100} color='#FF9900'>
+                                                        <Text fontSize={'0.5rem'} color='black'>Best Practices</Text>
+                                                    </CircularProgress>
+                                                    <CircularProgress className='rating2' size='40px' value={100} color='#24D0DB'>
+                                                        <Text fontSize={'0.5rem'} color='black'>Best Practices</Text>
+                                                    </CircularProgress>
+                                                    <CircularProgress className='rating2' size='40px' value={100} color='#DF5EEA'>
+                                                        <Text fontSize={'0.5rem'} color='black'>Best Practices</Text>
+                                                    </CircularProgress>
+
+                                                </Center>
                             </AccordionPanel>
                         </AccordionItem>
 
@@ -190,7 +207,7 @@ export default function ProductCard({ project }) {
 
                     </Accordion>
                 </Box>
-                <Button bg={'#F6F6F6'} variant={'outline'} >
+                <Button bg={'#5458f6'} color='white' variant={'outline'} >
                     <Center>
                         <Link
                             to={`/ProjectInfo/${project?.projectId}`}

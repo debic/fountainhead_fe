@@ -282,14 +282,14 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
  {
     label: 'Projects',
-    href: 'AllProjects',
+    href: '/AllProjects',
   },
   {
     label: 'Profile',
-    href: 'Profile',
+    href: '/Profile',
   },
   {
     label: 'Add Project',
-    href: 'AddProject',
+    href: '/AddProject',
   },
 ];
