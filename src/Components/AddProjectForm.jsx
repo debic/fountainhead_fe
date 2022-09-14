@@ -56,7 +56,7 @@ export default function AddProjectForm(props) {
 
                 <FormControl id="type">
                     <FormLabel color={'white'}>Type</FormLabel>
-                    <Select placeholder='Select option' onChange={handleChange} borderWidth={2}>
+                    <Select placeholder='Select option' onChange={handleChange} borderWidth={2} color={'white'}>
                         <option value={"FE"}>Front End</option>
                         <option value={"BE"}>Back End</option>
                         <option value={"FS"}>Full Stack</option>
