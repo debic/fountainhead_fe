@@ -1,8 +1,14 @@
 import { Flex, Heading, Stack, Text, useBreakpointValue } from '@chakra-ui/react'
 import React from 'react'
 import AddProjectForm from '../Components/AddProjectForm'
+import { useUserContext } from '../Context/UserContext'
+import { useEffect } from 'react'
 
 export default function AddProject() {
+
+    const {validate} = useUserContext()
+
+    useEffect(() => {validate()}, [])
  
     return (
         <Flex
