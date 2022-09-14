@@ -7,7 +7,7 @@ import { useUserContext } from '../Context/UserContext';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { NavigateBefore } from '@mui/icons-material';
-import logo from '../Img/download.png';
+import logo from '../Img/logo.png';
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -27,9 +27,7 @@ export default function Navbar() {
     navigate("/Login");
   }
 
-  const handleGoToProfile = () => {
-    navigate('/Profile')
-  }
+
 
   return (
     <Box>
@@ -60,32 +58,20 @@ export default function Navbar() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}  alignContent={'center'} align={'center'}>
+        <Link
+            href={'/'}>
           <Text
+  
           alignContent={'center'}
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
             fontFamily={'heading'}
             fontSize={'xl'}
             color={useColorModeValue('white', 'white')}>
             <img src={logo} width={50}/>
-          </Text>
 
-          <Text
-            onClick={handleGoToProfile}
-            ml={10}
-            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-            fontFamily={'heading'}
-            fontSize={'xl'}
-            color={'white'}
-            right={'240'}
-            cursor = {'pointer'}
-            _hover={{
-              textDecoration: 'none',
-              color: "gray.800",
-            }}
-            fontWeight={400}
-          >
-            Profile
           </Text>
+          </Link>
+
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
@@ -294,12 +280,13 @@ const MobileNavItem = ({ label, children, href }) => {
 
 
 const NAV_ITEMS = [
-  {
-    label: 'Home',
-    href: '/',
-  }, {
+ {
     label: 'Projects',
     href: 'AllProjects',
+  },
+  {
+    label: 'Profile',
+    href: 'Profile',
   },
   {
     label: 'Add Project',
