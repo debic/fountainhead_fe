@@ -17,6 +17,7 @@ export default function AllProjects() {
         params: formData
       })
       setCurrentProjects(response.data.data)
+      console.log(response.data.data);
     } catch (err) {
       console.log(err)
     }
@@ -36,15 +37,6 @@ export default function AllProjects() {
   const { validate } = useUserContext();
 
   useEffect(() => { validate() }, [])
-
-  async function readAllProjects() {
-    try {
-      const projects = await axios.get("http://localhost:8080/api/project")
-      setCurrentProjects(projects.data.data)
-    } catch (err) {
-      console.log(err)
-    }
-  }
 
   const searchByRating = async (sortBy, role) => {
     try {

@@ -18,6 +18,7 @@ import {
   ListIcon,
   OrderedList,
   UnorderedList,
+  Select,
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { CheckIcon } from '@chakra-ui/icons';
@@ -32,23 +33,24 @@ export default function Profile() {
   const inputRef = useRef(null)
 
   const data = useContext(UserContext)
-  const {validate} = useUserContext()
+  const { validate } = useUserContext()
 
-  useEffect(() => {validate()}, [])
+  useEffect(() => { validate() }, [])
 
   const { currentUser } = data
-  const { name, email, bio, avatar } = currentUser
+  const { name, email, bio, avatar, role } = currentUser
 
   const [userName, setUserName] = useState(name)
   const [userEmail, setUserEmail] = useState(email)
   const [userBio, setUserBio] = useState(bio)
   const [Userphoto, setUserPhoto] = useState(avatar)
   const [projects, setProjects] = useState('')
+  const [userRole, setUserRole] = useState(role)
 
   const handleUsernameChange = (e) => setUserName(e.target.value)
   const handleEmailChange = (e) => setUserEmail(e.target.value)
   const handleUserBioChange = (e) => setUserBio(e.target.value)
-
+  const handleUserRoleChange = (e) => setUserRole(e.target.value)
   const handleChangePhotoClick = () => inputRef.current.click()
 
   const handleFileChange = async (event) => {
@@ -78,7 +80,8 @@ export default function Profile() {
       data: {
         name: userName,
         email: userEmail,
-        bio: userBio
+        bio: userBio,
+        role: userRole
       },
       withCredentials: true
     })
@@ -170,6 +173,14 @@ export default function Profile() {
               _placeholder={{ color: 'gray.500' }}
               type="email"
             />
+          </FormControl>
+
+          <FormControl id="role">
+            <FormLabel>Role</FormLabel>
+            <Select placeholder='Select Role' onChange={handleUserRoleChange} value={userRole}>
+              <option value={"student"}>Student</option>
+              <option value={"client"}>Client</option>
+            </Select>
           </FormControl>
 
           <Stack spacing={6} direction={['column', 'row']}>
