@@ -3,6 +3,7 @@ import {
     chakra,
     Icon,
     SimpleGrid,
+    Stack,
     Stat,
     StatLabel,
     StatNumber,
@@ -17,25 +18,6 @@ import ProductCard from '../Components/ProductCard';
 
 
 
-// function StatsCard(props) {
-//     const { title, stat } = props;
-//     return (
-//         <Stat
-//             px={{ base: 4, md: 8 }}
-//             py={'7'}
-//             shadow={'xl'}
-//             border={'1px solid'}
-//             borderColor={useColorModeValue('gray.800', 'gray.500')}
-//             rounded={'lg'}>
-//             <StatLabel fontWeight={'medium'} isTruncated>
-//                 {title}
-//             </StatLabel>
-//             <StatNumber fontSize={'2xl'} fontWeight={'medium'}>
-//                 {stat}
-//             </StatNumber>
-//         </Stat>
-//     );
-// }
 
 export default function MyProjects() {
 
@@ -79,16 +61,21 @@ export default function MyProjects() {
         <Box maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
 
                
+            {currentProjects ?
+<>
+            {currentProjects?.map((project) => (
+                <>
+            <CloseIcon id={project.projectId} onClick={handleDeleteProject}  ml='5px' _hover={{ 'color': 'red.600' }} cursor={'pointer'} mb='-100px'/>
 
+            <ProductCard key={project.projectId} project={project} />
+            </>
+           
+        ))}
+</>
+            :
+            <></>}
                     
-                        {currentProjects?.map((project) => (
-                           
-                                <>
-                            <CloseIcon id={project.projectId} onClick={handleDeleteProject}  ml='5px' _hover={{ 'color': 'red.600' }} cursor={'pointer'} mb='-100px'/>
-
-                            <ProductCard key={project.projectId} project={project} />
-                            </>
-                        ))}
+                        
                   
 
             
