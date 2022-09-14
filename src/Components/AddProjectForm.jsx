@@ -2,7 +2,9 @@ import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { Box, Button, FormControl, FormLabel, Input, Link, Select, Stack, Text, Textarea, useBreakpointValue } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import { toast , ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function AddProjectForm(props) {
 
@@ -72,6 +74,8 @@ export default function AddProjectForm(props) {
                     </Button>
                 </Stack>
             </Stack>
+
+            <ToastContainer />
         </Box>
     )
 }
