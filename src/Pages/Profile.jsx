@@ -26,11 +26,15 @@ import { useContext, useState, useRef, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MyProjects from './MyProjects';
+import { useUserContext } from '../Context/UserContext';
 
 export default function Profile() {
   const inputRef = useRef(null)
 
   const data = useContext(UserContext)
+  const {validate} = useUserContext()
+
+  useEffect(() => {validate()}, [])
 
   const { currentUser } = data
   const { name, email, bio, avatar } = currentUser
