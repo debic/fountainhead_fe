@@ -23,7 +23,7 @@ import {
 } from '@chakra-ui/react';
 
   export default function VoteForm() {
-    const { isOpen, onClose } = useUserContext();
+    const { isOpen, onClose, getRaitingFunction, currentProject, setCurrentProject, currentProjectRaitingStudents, setCurrentProjectRaitingStudents, currentProjectRaitingProfesional, setCurrentProjectRaitingProfesional  } = useUserContext();
 
 
 
@@ -47,6 +47,7 @@ import {
 
       async function voteFunction(){
         onClose()
+        getRaitingFunction()
         const newVote = {
           creativity: creativity,
           bestPractices: bestPractices,

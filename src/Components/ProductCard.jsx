@@ -122,7 +122,7 @@ export default function ProductCard({ project }) {
                                     <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
 
                                         <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
-                                            <Text fontWeight={600}>Students Rating</Text>
+                                            <Text fontWeight={600}>Profesionals Rating</Text>
                                         </Stack>
                                     </Stack>
                                 </Box>
@@ -163,7 +163,7 @@ export default function ProductCard({ project }) {
                                     <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
 
                                         <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
-                                            <Text fontWeight={600}>Profesionals Raiting</Text>
+                                            <Text fontWeight={600}>Students Raiting</Text>
                                         </Stack>
                                     </Stack>
                                 </Box>
