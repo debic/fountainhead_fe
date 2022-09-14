@@ -13,33 +13,34 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState, useEffect } from 'react';
+import ProductCard from '../Components/ProductCard';
 
 
 
-
-function StatsCard(props) {
-    const { title, stat } = props;
-    return (
-        <Stat
-            px={{ base: 4, md: 8 }}
-            py={'7'}
-            shadow={'xl'}
-            border={'1px solid'}
-            borderColor={useColorModeValue('gray.800', 'gray.500')}
-            rounded={'lg'}>
-            <StatLabel fontWeight={'medium'} isTruncated>
-                {title}
-            </StatLabel>
-            <StatNumber fontSize={'2xl'} fontWeight={'medium'}>
-                {stat}
-            </StatNumber>
-        </Stat>
-    );
-}
+// function StatsCard(props) {
+//     const { title, stat } = props;
+//     return (
+//         <Stat
+//             px={{ base: 4, md: 8 }}
+//             py={'7'}
+//             shadow={'xl'}
+//             border={'1px solid'}
+//             borderColor={useColorModeValue('gray.800', 'gray.500')}
+//             rounded={'lg'}>
+//             <StatLabel fontWeight={'medium'} isTruncated>
+//                 {title}
+//             </StatLabel>
+//             <StatNumber fontSize={'2xl'} fontWeight={'medium'}>
+//                 {stat}
+//             </StatNumber>
+//         </Stat>
+//     );
+// }
 
 export default function MyProjects() {
 
     const [currentProjects, setCurrentProjects] = useState('')
+    console.log(currentProjects)
 
     const handleDeleteProject = (event) => {
         alert('Are You Sure You Want To Delete The Project?')
@@ -65,7 +66,7 @@ export default function MyProjects() {
         })
             .then(res => {
                 setCurrentProjects(res.data.data)
-                console.log(currentProjects)
+                
             })
             .catch(err => console.log(err))
     }
@@ -77,17 +78,21 @@ export default function MyProjects() {
     return (
         <Box maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
 
-            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
-                {currentProjects.length > 0 && currentProjects.map(project => {
+               
 
-                    return <div key={project.created_at}>
-                        <StatsCard title={'Project'} stat={project.name} />
-                        <CloseIcon id={project.projectId} onClick={handleDeleteProject} position={'relative'} bottom={'110px'} ml='5px' _hover={{ 'color': 'red.600' }} cursor={'pointer'} />
-                    </div>
+                    
+                        {currentProjects?.map((project) => (
+                           
+                                <>
+                            <CloseIcon id={project.projectId} onClick={handleDeleteProject}  ml='5px' _hover={{ 'color': 'red.600' }} cursor={'pointer'} mb='-100px'/>
 
-                })}
+                            <ProductCard key={project.projectId} project={project} />
+                            </>
+                        ))}
+                  
 
-            </SimpleGrid>
+            
+
 
             <ToastContainer />
         </Box>

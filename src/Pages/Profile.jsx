@@ -28,7 +28,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import MyProjects from './MyProjects';
 import { useUserContext } from '../Context/UserContext';
 import { Photo } from '@mui/icons-material';
-
+import { Card } from '@mui/material';
+import ProductCard from '../Components/ProductCard';
 export default function Profile() {
   const inputRef = useRef(null)
 
@@ -207,12 +208,13 @@ export default function Profile() {
         </Stack>
 
 
-        <Heading as='h2' size='xl'>
+        <Heading as='h2' size='xl' color='white'>
           My Projects
         </Heading>
 
         <Center p={5}>
           <MyProjects />
+    
         </Center>
 
       </Flex>
