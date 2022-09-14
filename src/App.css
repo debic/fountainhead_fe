@@ -3,6 +3,11 @@
   font-family: 'Noto Sans', sans-serif;
 }
 
+.sel:focus-visible{
+border-color: greenyellow;
+background-color: rgb(255, 172, 47);
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
