@@ -34,6 +34,11 @@ export default function Profile() {
 
   const data = useContext(UserContext)
   const { validate } = useUserContext()
+  useEffect(() => {
+     validate()
+   
+  }, [])
+  
 
   useEffect(() => {
     axios.get("http://localhost:8080/api/user/validate", { withCredentials: true })
