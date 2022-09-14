@@ -21,7 +21,8 @@ export default function AddProjectForm(props) {
         try {
             e.preventDefault()
             const res = await axios.post("http://localhost:8080/api/project", formData, { withCredentials: true });
-            if (res.data.ok) {
+            console.log(res);
+            if (res.status === 200) {
                 toast.success("The project was successfully added");
             } else {
                 toast.error("There was an error adding the project");
@@ -33,6 +34,7 @@ export default function AddProjectForm(props) {
 
     return (
         <Box>
+            <ToastContainer />
             <Stack spacing={4} >
                 <FormControl id="name">
                     <FormLabel color={'white'}>Project Name</FormLabel>
