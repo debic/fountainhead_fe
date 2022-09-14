@@ -24,7 +24,7 @@ export default function Navbar() {
     logOutPassport()
     localStorage.removeItem("user");
     setCurrentUser(null);
-    navigate("/");
+    navigate("/Login");
   }
 
   const handleGoToProfile = () => {
