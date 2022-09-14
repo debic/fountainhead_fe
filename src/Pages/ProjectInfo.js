@@ -79,10 +79,7 @@ export default function ProjectInfo() {
 
 
       <VoteForm/>
-            
-
-
-
+          
       <Stack w={'55%'} ml={'15'}>
    
                 <Center justifyContent='flex-end'>   

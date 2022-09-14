@@ -47,7 +47,7 @@ import {
 
       async function voteFunction(){
         onClose()
-      
+
         const newVote = {
           creativity: creativity,
           bestPractices: bestPractices,
