@@ -7,17 +7,10 @@ import {
   Input,
   Stack,
   useColorModeValue,
-  HStack,
   Avatar,
   AvatarBadge,
   IconButton,
   Center,
-  Text,
-  List,
-  ListItem,
-  ListIcon,
-  OrderedList,
-  UnorderedList,
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { CheckIcon } from '@chakra-ui/icons';
@@ -27,28 +20,34 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MyProjects from './MyProjects';
 import { useUserContext } from '../Context/UserContext';
+import { Photo } from '@mui/icons-material';
 
 export default function Profile() {
   const inputRef = useRef(null)
 
   const data = useContext(UserContext)
-  const {validate} = useUserContext()
+  const { validate } = useUserContext()
 
-  useEffect(() => {validate()}, [])
+  useEffect(() => {
+    axios.get("http://localhost:8080/api/user/validate", { withCredentials: true })
+      .then(res => {
+        const user = res.data[0]
+        const { name, email, bio, avatar } = user
+        setUserName(name)
+        setUserEmail(email)
+        setUserBio(bio)
+        setUserPhoto(avatar)
+      })
+  }, [])
 
-  const { currentUser } = data
-  const { name, email, bio, avatar } = currentUser
-
-  const [userName, setUserName] = useState(name)
-  const [userEmail, setUserEmail] = useState(email)
-  const [userBio, setUserBio] = useState(bio)
-  const [Userphoto, setUserPhoto] = useState(avatar)
-  const [projects, setProjects] = useState('')
+  const [userName, setUserName] = useState('')
+  const [userEmail, setUserEmail] = useState('')
+  const [userBio, setUserBio] = useState('')
+  const [Userphoto, setUserPhoto] = useState('')
 
   const handleUsernameChange = (e) => setUserName(e.target.value)
   const handleEmailChange = (e) => setUserEmail(e.target.value)
   const handleUserBioChange = (e) => setUserBio(e.target.value)
-
   const handleChangePhotoClick = () => inputRef.current.click()
 
   const handleFileChange = async (event) => {
@@ -85,9 +84,6 @@ export default function Profile() {
       .then(res => toast.success('Saved'))
       .catch(err => toast.error(err))
   }
-
-
-
 
   return (
 
@@ -195,7 +191,7 @@ export default function Profile() {
         </Heading>
 
         <Center p={5}>
-          <MyProjects projects={projects} />
+          <MyProjects />
         </Center>
 
       </Flex>
