@@ -58,7 +58,7 @@ export default function EditProfile() {
           />
           <Heading color={'white'}>Complete Name</Heading>
           <Text color={'white'} fontSize={'lg'}>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            BLALLALALorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod tempor invidunt ut labore Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod tempor invidunt ut labore nonumy eirmod tempor invidunt ut labore por invidunt ut labore 
           </Text>
