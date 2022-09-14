@@ -46,7 +46,7 @@ import {
 
 
       async function voteFunction(){
-        console.log("vfbdhjk")
+        onClose()
         const newVote = {
           creativity: creativity,
           bestPractices: bestPractices,

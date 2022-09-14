@@ -18,7 +18,7 @@ export default function AllProjects() {
       setCurrentProjects(response.data.data)
     } catch (err) {
       console.log(err)
-    }
+    }}
 
 
     async function readAllProjects() {
@@ -100,4 +100,4 @@ export default function AllProjects() {
 
   }
 
-}
+
