@@ -30,7 +30,7 @@ function App() {
     <div className="App">
       <Navbar/>
       <Routes>
-             <Route path="/" element={<Home/>}/>
+             {/* <Route path="/" element={<Home/>}/> */}
              <Route path="/Login" element={<Login/>}/>
              <Route path="/SignUp" element={<SignUp/>}/>
              <Route path="/Profile" element={<Profile/>}/>

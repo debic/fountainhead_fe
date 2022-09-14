@@ -14,10 +14,12 @@ export default function GoogleGithub() {
       <GoogleIcon
         onClick={gooleAuth}
         style={{ fontSize: 50, color: "white" }}
+        className='hoover'
       />
       <GitHubIcon
         onClick={gitHubAuth}
         style={{ fontSize: 50, color: "white" }}
+        className='hoover'
       />
     </div>
   );
