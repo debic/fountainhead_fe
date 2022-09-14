@@ -120,16 +120,16 @@ export default function ProductCard({ project }) {
 
                         <AccordionItem py={10}>
                             <AccordionButton p={0} >
-                                <Box flex='1' textAlign='left'>
-                                    <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
 
+
+                            <Flex>
+                                    <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
                                         <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
                                             <Text fontWeight={600}>Profesionals Rating</Text>
                                         </Stack>
                                     </Stack>
-                                </Box>
-
-                                <Spacer />
+                                    </Flex>
+                             
                                 <Flex>
                                     <Center>
                                         <CircularProgress value={(currentProjectRaitingProfesional?.avgCreativity) * 10} color='#69DB33'>
@@ -148,29 +148,16 @@ export default function ProductCard({ project }) {
                                     </Center>
                                 </Flex>
 
-                                <AccordionIcon />
-                            </AccordionButton>
+                                <Spacer></Spacer>
 
-                            <AccordionPanel pb={4}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo consequat.
-                            </AccordionPanel>
-                        </AccordionItem>
+                                <Flex>
+                                <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
+                                <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
+                                    <Text fontWeight={600}>Students Raiting</Text>
+                                </Stack>
+                                </Stack>
+                                </Flex>
 
-                        <AccordionItem py={10}>
-                            <AccordionButton p={0} >
-                                <Box flex='1' textAlign='left'>
-                                    <Stack mt={6} mb={3} direction={'row'} spacing={4} align={'center'}>
-
-                                        <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
-                                            <Text fontWeight={600}>Students Raiting</Text>
-                                        </Stack>
-                                    </Stack>
-                                </Box>
-
-                                <Spacer />
                                 <Flex>
                                     <Center>
                                         <CircularProgress value={(currentProjectRaitingStudents?.avgCreativity) * 10} color='#69DB33'>
@@ -198,6 +185,8 @@ export default function ProductCard({ project }) {
                                 commodo consequat.
                             </AccordionPanel>
                         </AccordionItem>
+
+                        
 
                     </Accordion>
                 </Box>

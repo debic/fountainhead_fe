@@ -57,10 +57,10 @@ export default function ProjectInfo() {
     <Flex direction={'column'} pb={'150'}>
     <Center py={'200'}>
 
-    <Flex  maxW={'60vw'}> 
+    <Flex  maxW={'70vw'}> 
 
     
-      <Stack w={'45%'} mr={'15'}>
+      <Stack w={'70%'} mr={'15'}>
                <Heading fontSize={'6xl'} as='samp' color={'white'} >{currentProject.name}</Heading>
                 <Text fontSize={'lg'} color={'white'}>
                 {currentProject.info}

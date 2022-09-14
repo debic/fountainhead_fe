@@ -71,7 +71,7 @@ export default function UserContextProvider({ children }) {
     const [currentProjectRaitingProfesional, setCurrentProjectRaitingProfesional] = useState({});
 
     async function getRaitingFunction(){
-
+        console.log("getRaitingFunction")
         try{
           const project = await axios.get(`http://localhost:8080/api/project/vote/${projectId}`, {withCredentials:true})
           console.log(project)
