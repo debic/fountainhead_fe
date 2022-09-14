@@ -2,7 +2,8 @@ import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { Box, Button, FormControl, FormLabel, Input, Link, Select, Stack, Text, Textarea, useBreakpointValue } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function AddProjectForm(props) {
 
@@ -19,7 +20,8 @@ export default function AddProjectForm(props) {
         try {
             e.preventDefault()
             const res = await axios.post("http://localhost:8080/api/project", formData, { withCredentials: true });
-            if (res.data.ok) {
+            console.log(res);
+            if (res.status === 200) {
                 toast.success("The project was successfully added");
             } else {
                 toast.error("There was an error adding the project");
@@ -31,6 +33,7 @@ export default function AddProjectForm(props) {
 
     return (
         <Box>
+            <ToastContainer />
             <Stack spacing={4} >
                 <FormControl id="name">
                     <FormLabel color={'white'}>Project Name</FormLabel>
