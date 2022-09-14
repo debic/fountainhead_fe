@@ -34,21 +34,18 @@ export default function Profile() {
 
   const data = useContext(UserContext)
   const { validate } = useUserContext()
-  useEffect(() => {
-     validate()
-   
-  }, [])
-  
+  useEffect(() => {validate()}, [])
 
   useEffect(() => {
     axios.get("http://localhost:8080/api/user/validate", { withCredentials: true })
       .then(res => {
         const user = res.data[0]
-        const { name, email, bio, avatar } = user
+        const { name, email, bio, avatar, role } = user
         setUserName(name)
         setUserEmail(email)
         setUserBio(bio)
         setUserPhoto(avatar)
+        setUserRole(role)
       })
   }, [])
 
@@ -56,11 +53,12 @@ export default function Profile() {
   const [userEmail, setUserEmail] = useState('')
   const [userBio, setUserBio] = useState('')
   const [Userphoto, setUserPhoto] = useState('')
+  const [userRole, setUserRole] = useState('')
 
   const handleUsernameChange = (e) => setUserName(e.target.value)
   const handleEmailChange = (e) => setUserEmail(e.target.value)
   const handleUserBioChange = (e) => setUserBio(e.target.value)
-  const handleUserRoleChange = (e) => setUserBio(e.target.value)
+  const handleRoleChange = (e) => setUserRole(e.target.value)
   const handleChangePhotoClick = () => inputRef.current.click()
 
   const handleFileChange = async (event) => {
@@ -91,6 +89,7 @@ export default function Profile() {
         name: userName,
         email: userEmail,
         bio: userBio,
+        role: userRole
       },
       withCredentials: true
     })
@@ -181,13 +180,13 @@ export default function Profile() {
             />
           </FormControl>
 
-          {/* <FormControl id="role">
+          <FormControl id="role">
             <FormLabel>Role</FormLabel>
-            <Select placeholder='Select Role' onChange={handleUserRoleChange} value={userRole}>
+            <Select placeholder='Select Role' onChange={handleRoleChange} value={userRole}>
               <option value={"student"}>Student</option>
               <option value={"client"}>Client</option>
             </Select>
-          </FormControl> */}
+          </FormControl>
 
           <Stack spacing={6} direction={['column', 'row']}>
 
