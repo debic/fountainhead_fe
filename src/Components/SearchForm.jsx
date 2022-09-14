@@ -12,9 +12,6 @@ export default function SearchForm({ searchProjects, searchByRating }) {
         }));
     }
 
-
-
-
     return (
         <Stack maxW={'2xl'} align={'center'} spacing={6} w={'full'} sx={{ py: 6 }} >
             <Text
@@ -25,12 +22,12 @@ export default function SearchForm({ searchProjects, searchByRating }) {
                 fontSize={useBreakpointValue({ base: '3xl', md: '4xl' })}>
                 Explore Projects
             </Text>
-            <Stack direction={'row'} w={'full'}>
+            <Stack direction={'row'} w={'full'} align={'center'}>
                 <Box
                     w={'full'}
                     rounded={'lg'}
                 >
-                    <Stack spacing={4}>
+                    <Stack spacing={4} align={'center'}>
                         <FormControl id="project">
 
                             <InputGroup size='md'>
@@ -46,9 +43,9 @@ export default function SearchForm({ searchProjects, searchByRating }) {
 
                         <HStack pb={'10%'}>
                             <Box>
-                                <FormControl id="type">
-                                    <Select placeholder='Select option' onChange={handleChange}>
-                                        <option value={"FE"}>Front End</option>
+                                <FormControl id="type" color={"white"}>
+                                    <Select placeholder='Project type' onChange={handleChange} className='sel'>
+                                        <option value={"FE"} >Front End</option>
                                         <option value={"BE"}>Back End</option>
                                         <option value={"FS"}>Full Stack</option>
                                     </Select>
@@ -56,7 +53,7 @@ export default function SearchForm({ searchProjects, searchByRating }) {
                             </Box>
                             <Box>
                                 <FormControl id="filter-2" color={"white"}>
-                                    <Select placeholder='Client ratings' variant='outline' onChange={(e) => { searchByRating(e.target.value, 'client') }}>
+                                    <Select placeholder='Client ratings' variant='outline' onChange={(e) => { searchByRating(e.target.value, 'client') }} className='sel'>
                                         <option value='avgCreativity'>Most creative</option>
                                         <option value='avgBestPractices'>Best practices</option>
                                         <option value='avgDesign'>Best design</option>
@@ -66,7 +63,7 @@ export default function SearchForm({ searchProjects, searchByRating }) {
                             </Box>
                             <Box>
                                 <FormControl id="filter-3" color={"white"}>
-                                    <Select placeholder='Students ratings' onChange={(e) => { searchByRating(e.target.value, 'student') }}>
+                                    <Select placeholder='Students ratings' onChange={(e) => { searchByRating(e.target.value, 'student') }} className='sel'>
                                         <option value='avgCreativity'>Most creative</option>
                                         <option value='avgBestPractices'>Best practices</option>
                                         <option value='avgDesign'>Best design</option>
