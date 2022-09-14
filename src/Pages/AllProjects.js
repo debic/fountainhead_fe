@@ -17,6 +17,7 @@ export default function AllProjects() {
         params: formData
       })
       setCurrentProjects(response.data.data)
+      console.log(response.data.data);
     } catch (err) {
       console.log(err)
     }
