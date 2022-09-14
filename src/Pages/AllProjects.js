@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useUserContext } from '../Context/UserContext';
 
+
 export default function AllProjects() {
   const [currentProjects, setCurrentProjects] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -14,14 +15,14 @@ export default function AllProjects() {
     try {
       const response = await axios.get("http://localhost:8080/api/project", {
         params: formData
-      });
-      setCurrentProjects(response.data.data);
+      })
+      setCurrentProjects(response.data.data)
     } catch (err) {
-      console.log(err);
-
+      console.log(err)
     }
     setIsLoading(false);
   }
+
 
   async function readAllProjects() {
     try {
@@ -34,9 +35,16 @@ export default function AllProjects() {
 
   const { validate } = useUserContext();
 
-  useEffect(() => {
-    validate();
-  }, [])
+  useEffect(() => { validate() }, [])
+
+  async function readAllProjects() {
+    try {
+      const projects = await axios.get("http://localhost:8080/api/project")
+      setCurrentProjects(projects.data.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   const searchByRating = async (sortBy, role) => {
     try {
@@ -95,6 +103,5 @@ export default function AllProjects() {
       </VStack>
     </Flex>
   );
-
 
 }

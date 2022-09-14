@@ -1,5 +1,4 @@
 import { Box, Button, FormControl, HStack, Input, InputGroup, InputRightElement, Select, Stack, Text, useBreakpointValue, useColorModeValue } from '@chakra-ui/react'
-import axios from 'axios';
 import React, { useState } from 'react'
 
 export default function SearchForm({ searchProjects, searchByRating }) {
@@ -13,27 +12,8 @@ export default function SearchForm({ searchProjects, searchByRating }) {
         }));
     }
 
-    //  Search By Name
-    const searchProjectsByName = () => {
-        axios({
-            method: 'GET',
-            url: 'http://localhost:8080/api/project',
-            data: {
-                type: formData.name
-            }
-        })
-    }
 
-    //  Search By Name
-    const searchProjectsByType = () => {
-        axios({
-            method: 'GET',
-            url: 'http://localhost:8080/api/project',
-            data: {
-                type: formData.type
-            }
-        })
-    }
+
 
     return (
         <Stack maxW={'2xl'} align={'center'} spacing={6} w={'full'} sx={{ py: 6 }} >
@@ -56,7 +36,7 @@ export default function SearchForm({ searchProjects, searchByRating }) {
                             <InputGroup size='md'>
                                 <Input type="text" bg={useColorModeValue('white', 'white.700')} color={"#5458f6"} onChange={handleChange} id="name" />
                                 <InputRightElement width='5rem'>
-                                    <Button h='97%' size='md' onClick={() => searchProjectsByName(formData)}>
+                                    <Button h='97%' size='md' onClick={() => searchProjects(formData)}>
                                         {'Search'}
                                     </Button>
                                 </InputRightElement>
@@ -67,10 +47,7 @@ export default function SearchForm({ searchProjects, searchByRating }) {
                         <HStack pb={'10%'}>
                             <Box>
                                 <FormControl id="type">
-                                    <Select placeholder='Select option' onChange={() => {
-                                        handleChange();
-                                        searchProjectsByType(formData);
-                                    }}>
+                                    <Select placeholder='Select option' onChange={handleChange}>
                                         <option value={"FE"}>Front End</option>
                                         <option value={"BE"}>Back End</option>
                                         <option value={"FS"}>Full Stack</option>

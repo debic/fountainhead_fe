@@ -1,13 +1,68 @@
 import {
-    Avatar, Box, Center, Heading, Stack, Text, useColorModeValue, Flex, Accordion, Button, AccordionItem,
-    AccordionButton, AccordionPanel, AccordionIcon, CircularProgress, CircularProgressLabel, Spacer
+    Avatar, Box, Center, Heading, Stack, Text, useColorModeValue, Flex, Accordion, Button,
+    AccordionItem,
+    AccordionButton,
+    AccordionPanel,
+    AccordionIcon, CircularProgress, CircularProgressLabel, Image, Spacer
 } from '@chakra-ui/react'
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import UserContext from '../Context/UserContext';
+import axios from 'axios';
+
+
 
 export default function ProductCard({ project }) {
+    const [currentProjectRaitingStudents, setCurrentProjectRaitingStudents] = useState({});
+    const [currentProjectRaitingProfesional, setCurrentProjectRaitingProfesional] = useState({});
+    const [currentUser, setCurrentUser] = useState({});
+    const [currentProject, setCurrentProject] = useState({});
+
+    let projectId = project.projectId
+
+
+    async function readProject() {
+        try {
+            const project = await axios.get(`http://localhost:8080/api/project/one/${projectId}`, { withCredentials: true })
+            setCurrentProject(project.data.data)
+            takeUserId(project.data.data.userId)
+
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+
+    async function takeUserId(currentUserId) {
+        try {
+            const userInfo = await axios.get(`http://localhost:8080/api/user/${currentUserId}`, { withCredentials: true })
+            setCurrentUser(userInfo.data[0])
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+
+    async function getRaitingFunction() {
+
+        try {
+            const project = await axios.get(`http://localhost:8080/api/project/vote/${projectId}`, { withCredentials: true })
+            setCurrentProjectRaitingStudents(project.data.studentVotes)
+            setCurrentProjectRaitingProfesional(project.data.clientVotes)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+
+    useEffect(() => {
+        readProject()
+        getRaitingFunction()
+    }, [])
+
+
     return (
-        <Center py={10}>
+        <Center py={20}>
             <Box
                 maxW={'700px'}
                 w={'full'}
@@ -24,6 +79,7 @@ export default function ProductCard({ project }) {
                     mx={-6}
                     mb={6}
                     pos={'relative'}>
+
 
                     <iframe src={project?.iframe}
                         style={{ width: "100%", height: "100%" }}
@@ -58,6 +114,7 @@ export default function ProductCard({ project }) {
 
                     </Stack>
 
+
                     <Accordion allowToggle mt={10}>
 
                         <AccordionItem py={10}>
@@ -74,22 +131,19 @@ export default function ProductCard({ project }) {
                                 <Spacer />
                                 <Flex>
                                     <Center>
-                                        <CircularProgress value={40} color='#69DB33'>
-                                            <CircularProgressLabel>40%</CircularProgressLabel>
+                                        <CircularProgress value={(currentProjectRaitingProfesional?.avgCreativity) * 10} color='#69DB33'>
+                                            <CircularProgressLabel >{currentProjectRaitingProfesional?.avgCreativity}</CircularProgressLabel>
                                         </CircularProgress>
-                                        <CircularProgress value={40} color='#FF9900'>
-                                            <CircularProgressLabel>40%</CircularProgressLabel>
+                                        <CircularProgress value={(currentProjectRaitingProfesional?.avgBestPractices) * 10} color='#FF9900'>
+                                            <CircularProgressLabel >{currentProjectRaitingProfesional?.avgBestPractices}</CircularProgressLabel>
                                         </CircularProgress>
-                                        <CircularProgress value={40} color='#24D0DB'>
-                                            <CircularProgressLabel>40%</CircularProgressLabel>
+                                        <CircularProgress value={(currentProjectRaitingProfesional?.avgDesign) * 10} color='#24D0DB'>
+                                            <CircularProgressLabel >{currentProjectRaitingProfesional?.avgDesign}</CircularProgressLabel>
                                         </CircularProgress>
-                                        <CircularProgress value={40} color='#DF5EEA'>
-                                            <CircularProgressLabel>40%</CircularProgressLabel>
+                                        <CircularProgress value={(currentProjectRaitingProfesional?.avgBugs) * 10} color='#DF5EEA'>
+                                            <CircularProgressLabel >{currentProjectRaitingProfesional?.avgBugs}</CircularProgressLabel>
                                         </CircularProgress>
 
-
-
-                                        <Text fontWeight={200}>Points</Text>
                                     </Center>
                                 </Flex>
 
@@ -118,17 +172,17 @@ export default function ProductCard({ project }) {
                                 <Spacer />
                                 <Flex>
                                     <Center>
-                                        <CircularProgress value={40} color='#69DB33'>
-                                            <CircularProgressLabel>40%</CircularProgressLabel>
+                                        <CircularProgress value={(currentProjectRaitingStudents?.avgCreativity) * 10} color='#69DB33'>
+                                            <CircularProgressLabel >{currentProjectRaitingStudents?.avgCreativity}</CircularProgressLabel>
                                         </CircularProgress>
-                                        <CircularProgress value={40} color='#FF9900'>
-                                            <CircularProgressLabel>40%</CircularProgressLabel>
+                                        <CircularProgress value={(currentProjectRaitingStudents?.avgBestPractices) * 10} color='#FF9900'>
+                                            <CircularProgressLabel >{currentProjectRaitingStudents?.avgBestPractices}</CircularProgressLabel>
                                         </CircularProgress>
-                                        <CircularProgress value={40} color='#24D0DB'>
-                                            <CircularProgressLabel>40%</CircularProgressLabel>
+                                        <CircularProgress value={(currentProjectRaitingStudents?.avgDesign) * 10} color='#24D0DB'>
+                                            <CircularProgressLabel >{currentProjectRaitingStudents?.avgDesign}</CircularProgressLabel>
                                         </CircularProgress>
-                                        <CircularProgress value={40} color='#DF5EEA'>
-                                            <CircularProgressLabel>40%</CircularProgressLabel>
+                                        <CircularProgress value={(currentProjectRaitingStudents?.avgBugs) * 10} color='#DF5EEA'>
+                                            <CircularProgressLabel >{currentProjectRaitingStudents?.avgBugs}</CircularProgressLabel>
                                         </CircularProgress>
                                     </Center>
                                 </Flex>
