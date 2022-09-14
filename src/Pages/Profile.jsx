@@ -110,15 +110,17 @@ export default function Profile() {
         <Stack
           spacing={4}
           w={'full'}
-          maxW={'lg'}
+          maxW={'36vw'}
           bg={useColorModeValue('white', 'gray.700')}
-          rounded={'xl'}
+          rounded={'md'}
           boxShadow={'lg'}
           p={6}
-          my={12}>
-          <Heading lineHeight={1.1} fontSize={{ base: '2xl', sm: '3xl' }}>
-            Profile Edit
-          </Heading>
+      
+          my='8%'
+        
+          >
+          
+      
 
           <FormControl id="userName">
 

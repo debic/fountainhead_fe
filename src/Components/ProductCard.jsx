@@ -63,7 +63,7 @@ export default function ProductCard({ project }) {
 
 
     return (
-        <Center py={20}>
+        <Center pb={20}>
             <Box
                 maxW={'700px'}
                 w={'full'}
@@ -86,7 +86,7 @@ export default function ProductCard({ project }) {
                         style={{ width: "100%", height: "100%" }}
                         title="damp-violet-0ybqks"
                         allow={"accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"}
-                        sandbox=" allow-modals allow-popups allow-presentation allow-same-origin allow-scripts  view = 'preview'">
+                        sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts  view = 'preview'">
                     </iframe>
 
                 </Box>
