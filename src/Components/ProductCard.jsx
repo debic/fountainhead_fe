@@ -20,6 +20,7 @@ export default function ProductCard({ project }) {
 
     let projectId = project.projectId
 
+ 
 
     async function readProject() {
         try {

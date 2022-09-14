@@ -19,10 +19,9 @@ export default function ProjectInfo() {
 
   
 
-  useEffect(() => {validate()},[])
-
-
-
+  useEffect(() => {validate()
+    window.scrollTo(0, 0)
+  },[])
 
 
   async function readProject(){
