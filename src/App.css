@@ -18,6 +18,11 @@
   }
 }
 
+.hoover:hover{
+cursor: pointer;
+box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
