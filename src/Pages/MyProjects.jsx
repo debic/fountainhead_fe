@@ -65,7 +65,7 @@ export default function MyProjects() {
 <>
             {currentProjects?.map((project) => (
                 <>
-            <CloseIcon id={project.projectId} onClick={handleDeleteProject}  ml='5px' _hover={{ 'color': 'red.600' }} cursor={'pointer'} mb='-100px'/>
+            <CloseIcon id={project.projectId} onClick={handleDeleteProject}  ml='5px' _hover={{ 'color': 'red.600' }} cursor={'pointer'} mb='20px'/>
 
             <ProductCard key={project.projectId} project={project} />
             </>

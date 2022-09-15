@@ -221,7 +221,7 @@ import {
 
                 </ModalBody>
                 <ModalFooter>
-                  <Button onClick={onClose} >Close</Button>
+                  <Button mr='10' onClick={onClose} >Close</Button>
                   <Button onClick={voteFunction}>Vote</Button>
 
                 </ModalFooter>

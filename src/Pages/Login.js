@@ -1,9 +1,10 @@
 import React from 'react'
-import { Flex, Box, FormControl, FormLabel, Input, Stack, Button, Heading, Text } from '@chakra-ui/react';
+import { Flex, Box, FormControl, FormLabel, Input, Stack, Button, Heading, Text, Image } from '@chakra-ui/react';
 import { useState } from 'react';
 import axios from 'axios';
 import { useUserContext } from '../Context/UserContext';
 import GoogleGithub from './googleGithub';
+import logo from '../Img/logo.gif'
 export default function Login() {
 
   const [email, setEmail] = useState("")
@@ -32,7 +33,10 @@ export default function Login() {
   return (
     <div className='LoginPage'>
       <div className='LoginPage_image'>
-      </div>
+      <Box boxSize='sm'>
+        <Image src={logo} alt='' />
+      </Box>
+          </div>
       <div className='LoginPage_form'>
         <Flex
           minH={'90vh'}

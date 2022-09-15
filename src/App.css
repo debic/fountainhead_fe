@@ -76,6 +76,9 @@ background-image: url("./Img/background.jpg");
 background-repeat: no-repeat;
 background-size: cover;
 width: 50vw;
+display: flex;
+justify-content: center;
+    align-items: center;
 
 }
 
@@ -85,6 +88,10 @@ width: 50vw;
 
 .codeFont {
   font-family: 'Source Code Pro', monospace;
+}
+
+.slider-track-slider1.css-11mh0ec{
+  background: red;
 }
 
 @media only screen and (max-width: 850px) {

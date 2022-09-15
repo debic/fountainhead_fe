@@ -60,7 +60,7 @@ export default function ProjectInfo() {
     <Flex  maxW={'70vw'}> 
 
     
-      <Stack w={'70%'} mr={'15'}>
+      <Stack w={'45%'} mr={'15'}>
                <Heading fontSize={'6xl'} as='samp' color={'white'} >{currentProject.name}</Heading>
                 <Text fontSize={'lg'} color={'white'}>
                 {currentProject.info}
@@ -86,22 +86,22 @@ export default function ProjectInfo() {
                     <Text color={'white'} fontSize={'xl'} mr={'10'} fontWeight={400}>Student Raiting</Text>
          
 
-                    <CircularProgress className='rating' size='70px'  value={(currentProjectRaitingStudents?.avgBestPractices)*10} color='#FF9900'>
+                    <CircularProgress w='90px'className='rating' size='70px'  value={(currentProjectRaitingStudents?.avgBestPractices)*10} color='#FF9900'>
                     <CircularProgressLabel className='rating_number' color={'white'}>{currentProjectRaitingStudents?.avgBestPractices}</CircularProgressLabel>
                     <Text fontSize={'0.8rem'} color='#D1D1D1'>Best Practices</Text>
                     </CircularProgress>
 
-                    <CircularProgress className='rating' size='70px'  value={(currentProjectRaitingStudents?.avgDesign)*10} color='#24D0DB'>
+                    <CircularProgress w='90px' className='rating' size='70px'  value={(currentProjectRaitingStudents?.avgDesign)*10} color='#24D0DB'>
                     <CircularProgressLabel className='rating_number' color={'white'}>{currentProjectRaitingStudents?.avgDesign}</CircularProgressLabel>
                     <Text fontSize={'0.8rem'} color='#D1D1D1'>Design</Text>
                     </CircularProgress>
 
-                    <CircularProgress className='rating' size='70px'  value={(currentProjectRaitingStudents?.avgBugs)*10} color='#DF5EEA'>
+                    <CircularProgress w='90px' className='rating' size='70px'  value={(currentProjectRaitingStudents?.avgBugs)*10} color='#DF5EEA'>
                     <CircularProgressLabel className='rating_number' color={'white'}>{currentProjectRaitingStudents?.avgBugs}</CircularProgressLabel>
                     <Text fontSize={'0.8rem'} color='#D1D1D1'>Bugs</Text>
                     </CircularProgress>
 
-                    <CircularProgress className='rating' size='70px' value={(currentProjectRaitingStudents?.avgCreativity)*10} color='#69DB33'>
+                    <CircularProgress w='90px' className='rating' size='70px' value={(currentProjectRaitingStudents?.avgCreativity)*10} color='#69DB33'>
                     <CircularProgressLabel className='rating_number' color={'white'}>{currentProjectRaitingStudents?.avgCreativity}</CircularProgressLabel>
                     <Text fontSize={'0.8rem'} color='#D1D1D1'>Creativity</Text>
                     </CircularProgress>
@@ -112,19 +112,19 @@ export default function ProjectInfo() {
                 <Center pt={'10'} justifyContent='flex-end'>
                     <Text color={'white'} fontSize={'xl'} mr={'10'} fontWeight={400}>Profesional Raiting</Text>
       
-                    <CircularProgress className='rating' size='70px'  value={(currentProjectRaitingProfesional?.avgBestPractices)*10} color='#FF9900'>
+                    <CircularProgress w='90px' className='rating' size='70px'  value={(currentProjectRaitingProfesional?.avgBestPractices)*10} color='#FF9900'>
                     <CircularProgressLabel className='rating_number' color={'white'}>{currentProjectRaitingProfesional?.avgBestPractices}</CircularProgressLabel>
                     <Text fontSize={'0.8rem'} color='#D1D1D1'>Best Practices</Text>
                     </CircularProgress>
-                    <CircularProgress className='rating' size='70px'  value={(currentProjectRaitingProfesional?.avgDesign)*10} color='#24D0DB'>
+                    <CircularProgress w='90px' className='rating' size='70px'  value={(currentProjectRaitingProfesional?.avgDesign)*10} color='#24D0DB'>
                     <CircularProgressLabel className='rating_number' color={'white'}>{currentProjectRaitingProfesional?.avgDesign}</CircularProgressLabel>
                     <Text fontSize={'0.8rem'} color='#D1D1D1'>Design</Text>
                     </CircularProgress>
-                    <CircularProgress className='rating' size='70px' value={(currentProjectRaitingProfesional?.avgBugs)*10} color='#DF5EEA'>
+                    <CircularProgress w='90px' className='rating' size='70px' value={(currentProjectRaitingProfesional?.avgBugs)*10} color='#DF5EEA'>
                     <CircularProgressLabel className='rating_number' color={'white'}>{currentProjectRaitingProfesional?.avgBugs}</CircularProgressLabel>
                     <Text fontSize={'0.8rem'} color='#D1D1D1'>Bugs</Text>
                     </CircularProgress>
-                    <CircularProgress className='rating' size='70px'  value={(currentProjectRaitingProfesional?.avgCreativity)*10} color='#69DB33'>
+                    <CircularProgress w='90px' className='rating' size='70px'  value={(currentProjectRaitingProfesional?.avgCreativity)*10} color='#69DB33'>
                     <CircularProgressLabel className='rating_number' color={'white'}>{currentProjectRaitingProfesional.avgCreativity}</CircularProgressLabel>
                     <Text fontSize={'0.8rem'} color='#D1D1D1'>Creativity</Text>
                     </CircularProgress>
