@@ -47,7 +47,7 @@ export default function AddProjectForm(props) {
 
                 <Box>
                     <Text fontWeight={600} fontSize={useBreakpointValue({ base: 'md', md: 'md' })} color={'black'}>
-                        Upload your code to <Link href='https://codesandbox.io' isExternal>CodeSandbox <ExternalLinkIcon mx='2px' /></Link> and paste the link in the field below
+                        Upload your code to <Link href='https://codesandbox.io/s/github' isExternal>CodeSandbox <ExternalLinkIcon mx='2px' /></Link> and paste the link in the field below
                     </Text>
                 </Box>
 
