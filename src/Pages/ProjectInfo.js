@@ -72,7 +72,7 @@ export default function ProjectInfo() {
                     </Center>
                 </Button>
                 <Button onClick={makePayment} w='180px' mt='30'>
-                  Support Student
+                  Reward Student
                   </Button>
                  </Flex>
       </Stack>
