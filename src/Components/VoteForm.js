@@ -21,7 +21,7 @@ import {
   Button,
 } from '@chakra-ui/react';
 
-  export default function VoteForm() {
+  export default function VoteForm({checkIfVoted}) {
     const { isOpen, onClose, getRaitingFunction } = useUserContext();
 
 
@@ -46,16 +46,17 @@ import {
 
       async function voteFunction(){
         onClose()
-
         const newVote = {
           creativity: creativity,
           bestPractices: bestPractices,
           design: design,
           bugs: bugs,
         }
+
         try{
           const project = await axios.post(`http://localhost:8080/api/project/vote/${projectId}`, newVote, {withCredentials:true})
           getRaitingFunction()
+          checkIfVoted()
         }catch(err){
           console.log(err)
         }

@@ -17,10 +17,7 @@ export default function ProductCard({ project }) {
     const [currentProjectRaitingProfesional, setCurrentProjectRaitingProfesional] = useState({});
     const [currentUser, setCurrentUser] = useState({});
     const [currentProject, setCurrentProject] = useState({});
-
     let projectId = project.projectId
-
- 
 
     async function readProject() {
         try {
@@ -45,9 +42,12 @@ export default function ProductCard({ project }) {
 
 
     async function getRaitingFunction() {
-
         try {
             const project = await axios.get(`http://localhost:8080/api/project/vote/${projectId}`, { withCredentials: true })
+
+            console.log(project.data)
+
+
             setCurrentProjectRaitingStudents(project.data.studentVotes)
             setCurrentProjectRaitingProfesional(project.data.clientVotes)
         } catch (err) {
@@ -72,7 +72,6 @@ export default function ProductCard({ project }) {
                 rounded={'md'}
                 p={10}
                 overflow={'hidden'}>
-
                 <Box
                     h={'500px'}
                     bg={'gray.100'}
@@ -80,8 +79,6 @@ export default function ProductCard({ project }) {
                     mx={-6}
                     mb={6}
                     pos={'relative'}>
-
-
                     <iframe src={project?.iframe}
                         style={{ width: "100%", height: "100%" }}
                         title="damp-violet-0ybqks"
@@ -119,36 +116,28 @@ export default function ProductCard({ project }) {
                         </Stack>
 
                     </Stack>
-
-
                     <Accordion allowToggle mt={10}>
 
                         <AccordionItem py={4}>
                             <AccordionButton p={0} >
 
                             <Flex mr={'3'} alignItems='center'>
-                                
-                                    
                                         <Stack direction={'column'} spacing={0} fontSize={'sm'} textAlign={'left'}>
                                             <Text fontWeight={600} pr='1'>Profesional Rating</Text>
-                                        </Stack>
-                                   
-                                 
-          
-                             
+                                        </Stack>                   
                                 <Flex>
                                     <Center>
-                                        <CircularProgress  size='40px'  value={(currentProjectRaitingProfesional?.avgCreativity) * 10} color='#69DB33'>
-                                            <CircularProgressLabel >{currentProjectRaitingProfesional?.avgCreativity}</CircularProgressLabel>
+                                        <CircularProgress  size='40px'  value={(currentProjectRaitingProfesional?.Creativity) * 10} color='#69DB33'>
+                                            <CircularProgressLabel >{currentProjectRaitingProfesional?.Creativity}</CircularProgressLabel>
                                         </CircularProgress>
-                                        <CircularProgress  size='40px' value={(currentProjectRaitingProfesional?.avgBestPractices) * 10} color='#FF9900'>
-                                            <CircularProgressLabel >{currentProjectRaitingProfesional?.avgBestPractices}</CircularProgressLabel>
+                                        <CircularProgress  size='40px' value={(currentProjectRaitingProfesional?.BestPractices) * 10} color='#FF9900'>
+                                            <CircularProgressLabel >{currentProjectRaitingProfesional?.BestPractices}</CircularProgressLabel>
                                         </CircularProgress>
-                                        <CircularProgress  size='40px' value={(currentProjectRaitingProfesional?.avgDesign) * 10} color='#24D0DB'>
-                                            <CircularProgressLabel >{currentProjectRaitingProfesional?.avgDesign}</CircularProgressLabel>
+                                        <CircularProgress  size='40px' value={(currentProjectRaitingProfesional?.Design) * 10} color='#24D0DB'>
+                                            <CircularProgressLabel >{currentProjectRaitingProfesional?.Design}</CircularProgressLabel>
                                         </CircularProgress>
-                                        <CircularProgress  size='40px' value={(currentProjectRaitingProfesional?.avgBugs) * 10} color='#DF5EEA'>
-                                            <CircularProgressLabel >{currentProjectRaitingProfesional?.avgBugs}</CircularProgressLabel>
+                                        <CircularProgress  size='40px' value={(currentProjectRaitingProfesional?.Bugs) * 10} color='#DF5EEA'>
+                                            <CircularProgressLabel >{currentProjectRaitingProfesional?.Bugs}</CircularProgressLabel>
                                         </CircularProgress>
 
                                     </Center>
@@ -164,17 +153,17 @@ export default function ProductCard({ project }) {
 
                                 <Flex>
                                     <Center>
-                                        <CircularProgress size='40px' value={(currentProjectRaitingStudents?.avgCreativity) * 10} color='#69DB33'>
-                                            <CircularProgressLabel >{currentProjectRaitingStudents?.avgCreativity}</CircularProgressLabel>
+                                        <CircularProgress size='40px' value={(currentProjectRaitingStudents?.Creativity) * 10} color='#69DB33'>
+                                            <CircularProgressLabel >{currentProjectRaitingStudents?.Creativity}</CircularProgressLabel>
                                         </CircularProgress>
-                                        <CircularProgress size='40px' value={(currentProjectRaitingStudents?.avgBestPractices) * 10} color='#FF9900'>
-                                            <CircularProgressLabel >{currentProjectRaitingStudents?.avgBestPractices}</CircularProgressLabel>
+                                        <CircularProgress size='40px' value={(currentProjectRaitingStudents?.BestPractices) * 10} color='#FF9900'>
+                                            <CircularProgressLabel >{currentProjectRaitingStudents?.BestPractices}</CircularProgressLabel>
                                         </CircularProgress>
                                         <CircularProgress size='40px' value={(currentProjectRaitingStudents?.avgDesign) * 10} color='#24D0DB'>
-                                            <CircularProgressLabel >{currentProjectRaitingStudents?.avgDesign}</CircularProgressLabel>
+                                            <CircularProgressLabel >{currentProjectRaitingStudents?.Design}</CircularProgressLabel>
                                         </CircularProgress>
-                                        <CircularProgress size='40px' value={(currentProjectRaitingStudents?.avgBugs) * 10} color='#DF5EEA'>
-                                            <CircularProgressLabel >{currentProjectRaitingStudents?.avgBugs}</CircularProgressLabel>
+                                        <CircularProgress size='40px' value={(currentProjectRaitingStudents?.Bugs) * 10} color='#DF5EEA'>
+                                            <CircularProgressLabel >{currentProjectRaitingStudents?.Bugs}</CircularProgressLabel>
                                         </CircularProgress>
                                     </Center>
                                 </Flex>
